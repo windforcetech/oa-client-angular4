@@ -1,0 +1,47 @@
+<p>
+  demo-config works!
+</p>
+
+
+<div id="div1">
+  <div></div>
+</div>
+<app-radio-group name="sex" [(ngModel)]="radioGroupValue" class="form-radio-group"
+                 [data]="[{label:'男',value:1},{label:'女',value:2}]"></app-radio-group>
+
+
+<form>
+
+  <app-drop-down-list name="test1" class="drop-down-select"
+                      [(ngModel)]="radioSelectValue"
+                      [placeholder]="'请选择'"
+                      [required]="false"
+                      [selectIndex]="2"
+                      [dataList]="[{label:'adgv',value:'1'},{label:'adaqdtgbvgv',value:'2'},{label:'adgv4ee687',value:'3'}]"></app-drop-down-list>
+
+  <app-checkbox-group-item name="test2" class="form-checkbox"
+                           [(ngModel)]="cbValue"
+                           [data]="{value:'swfyhgbv',label:'测试标题'}"
+                           (onCheckboxClick)="clickCheckBox()"></app-checkbox-group-item>
+
+  <app-checkbox-group name="test3" class="form-checkbox-group"
+                      [(ngModel)]="cbValues"
+                      [data]="[{label:'adgv',value:'1'},{label:'adaqdtgbvgv',value:'2'},{label:'adgv4ee687',value:'3'}]"></app-checkbox-group>
+  <app-select-button-group class="select-button-group"
+                           [list]="[{title:'werytg',value:'1',selected:true},{title:'26y',value:'2'},{title:'emthnfbg',value:'3'},{title:'ewhned',value:'4',selected:true}]"></app-select-button-group>
+
+
+  <app-tag-box-group name="test4" class="tag-box"
+                     [(ngModel)]="tagValues"></app-tag-box-group>
+
+  <input name="test5" placeholder="" type="checkbox" value="egmjhnfbf" [(ngModel)]="testValue[0]">
+  <input name="test5" placeholder="" type="checkbox" value="egmjhetuhnnfbf" [(ngModel)]="testValue[1]">
+</form>
+
+<button class="button3" (click)="click()">
+  ceshi
+</button>
+
+<button class="button3" (click)="click1()">
+  ceshi
+</button>

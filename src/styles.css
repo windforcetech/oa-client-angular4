@@ -1,0 +1,248 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, "Microsoft YaHei UI", serif;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+
+}
+
+html {
+  font-size: 20px;
+}
+
+#app-root {
+  position: relative;
+  height: 100%;
+}
+
+#app-left-nav {
+  width: 9rem;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  background-color: #605bf5;
+}
+
+/*****左侧样式*****/
+app-left-nav .left-nav-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+app-left-nav .left-nav-top .hospital-logo {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 3.25rem;
+}
+
+app-left-nav .left-nav-top .hospital-logo img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50% 50%;
+}
+
+app-left-nav .left-nav-top .hospital-name {
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: .7rem;
+  line-height: 1.7rem;
+  height: 2.7rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-overflow: ellipsis;
+  padding-bottom: 1rem;
+}
+
+/*****左侧样式结束*****/
+
+#app-main-container {
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  left: 9rem;
+  top: 0;
+  right: 0;
+}
+
+#app-center-container {
+  position: absolute;
+  z-index: 1;
+  width: calc(960px + (100% - 960px - 480px) / 2);
+  left: 0;
+  height: 100%;
+}
+
+#app-center-content {
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  background-color: #ffffff;
+  padding: 0 30px;
+}
+
+#app-right-container {
+  width: calc(481px + (100% - 960px - 481px) / 2);
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  height: 100%;
+  background-color: #fbfbfe;
+  min-width: 481px;
+  border-left: solid 1px #dbdbdb;
+}
+
+app-right-empty {
+  display: block;
+  padding-top: 200px;
+  text-align: center;
+}
+
+app-mask {
+  background-color: #000;
+  opacity: 0;
+}
+
+app-mask[status='hide'] {
+  opacity: 0 !important;
+  transition: opacity 0.2s;
+}
+
+app-mask[status='show'] {
+  opacity: 0.2 !important;
+  transition: opacity 0.2s;
+}
+
+@media screen and (max-width: 999px) {
+  #app-left-nav {
+    left: -9rem;
+    width: 9rem;
+    padding: 0 40px;
+    transition: left 0.2s, width 0.2s, padding 0.2s;
+  }
+
+  #app-main-container {
+    left: 0;
+    transition: left 0.2s;
+  }
+
+  #app-center-container {
+    width: 100%;
+    transition: width 0.2s;
+  }
+
+  #app-right-container {
+    left: 100%;
+    transition: left 0.2s;
+  }
+
+  #app-right-container[status='show'] {
+    left: 0;
+    width: 100%;
+    transition: left 0.2s, width 0.2s;
+  }
+
+  #app-right-container[status='hide'] {
+    left: 100%;
+    width: 100%;
+    transition: left 0.2s, width 0.2s;
+  }
+}
+
+@media screen and (max-width: 1160px) and (min-width: 1000px) {
+  #app-left-nav {
+    left: 0;
+    width: 3rem;
+    padding: 0;
+    transition: left 0.2s, width 0.2s, padding 0.2s;
+  }
+
+  #app-main-container {
+    left: 3rem;
+    transition: left 0.2s;
+  }
+
+  #app-center-container {
+    width: 100%;
+    transition: width 0.2s;
+  }
+
+  #app-right-container {
+    left: 100%;
+    transition: left 0.2s;
+  }
+
+  #app-right-container[status='show'] {
+    left: calc(100% - 480px);
+    right: 0;
+    width: 480px;
+    transition: left0 0.2s, width 0.2s, right 0.2s;
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1161px) {
+  #app-left-nav {
+    left: 0;
+    width: 9rem;
+    padding: 0 40px;
+    transition: left 0.2s, width 0.2s, padding 0.2s;
+  }
+
+  #app-main-container {
+    left: 9rem;
+    transition: left 0.2s;
+  }
+
+  #app-center-container {
+    width: 100%;
+    transition: width 0.2s;
+  }
+
+  #app-right-container {
+    left: 100%;
+    transition: left 0.2s;
+  }
+
+  #app-right-container[status='show'] {
+    left: calc(100% - 480px);
+    right: 0;
+    width: 480px;
+    transition: left0 0.2s, width 0.2s, right 0.2s;
+  }
+}
+
+@media screen and (min-width: 1601px) {
+  #app-left-nav {
+    left: 0;
+    width: 9rem;
+    padding: 0 40px;
+    transition: left 0.2s, width 0.2s, padding 0.2s;
+  }
+
+  #app-main-container {
+    left: 9rem;
+    transition: left 0.2s;
+  }
+
+  #app-center-container {
+    width: calc(960px + (100% - 960px - 480px) / 2);
+    transition: width 0.2s;
+  }
+
+  #app-right-container {
+    left: calc(100% - (480px + (100% - 960px - 480px) / 2));
+    transition: left 0.2s;
+  }
+}

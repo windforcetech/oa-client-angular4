@@ -1,0 +1,3 @@
+<app-radio-group-item class="form-radio" [label]="item.label" [value]="item.value"
+                      [(ngModel)]="values[i]" *ngFor="let item of data;let i = index;"
+                      (onRadioClick)="clickItem(i)"></app-radio-group-item>

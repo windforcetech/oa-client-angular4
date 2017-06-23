@@ -1,0 +1,16 @@
+<div id="app-center-container">
+  <app-center-header></app-center-header>
+  <div id="app-center-content">
+
+    <button (click)="onChildRouterClick()">测试第二路由</button>
+    <button (click)="onParentRouterClick()">测试父路由</button>
+
+    <a [routerLink]="[{outlets: {'patient-config': ['ready-test']}}]">ceshi </a>
+
+    <router-outlet name="patient-config"></router-outlet>
+  </div>
+</div>
+<div [attr.status]="displayStatus" id="right-slider-container">
+  <router-outlet></router-outlet>
+</div>
+

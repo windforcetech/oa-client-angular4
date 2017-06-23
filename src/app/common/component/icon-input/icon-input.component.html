@@ -1,0 +1,7 @@
+<input type="text" placeholder=""/>
+<span class="icon-list"
+      [ngStyle]="{'right':marginRight}"><i *ngFor="let item of iconList;let i = index;"
+                                           class="fa fa-{{item.iconName}}"
+                                           [ngStyle]="{'color':item.color}"
+                                           (click)="onIconClick(i)" aria-hidden="true"></i></span>
+

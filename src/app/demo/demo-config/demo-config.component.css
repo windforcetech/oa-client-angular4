@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+#div1 {
+  perspective: 100px;
+  width: 100px;
+  height: 40px;
+  margin-left: 50px;
+}
+
+#div1 > div {
+  width: 100px;
+  border: solid 3px #333;
+  border-top: 2px solid #333;
+  height: 40px;
+  background-color: #7a80fa;
+  transform: rotateX(-25deg);
+}

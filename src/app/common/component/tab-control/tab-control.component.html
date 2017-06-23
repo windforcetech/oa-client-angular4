@@ -1,0 +1,4 @@
+<div *ngFor="let tabItem of tabData;let i = index;"
+     [ngClass]="{'tab-ctrl-item-hover':defaultSelectedIndex === i}" class="tab-ctrl-item"
+     (click)="selectTabIndex(i)">{{tabItem}}
+</div>

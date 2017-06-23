@@ -1,0 +1,27 @@
+<span>{{moduleName}}</span>
+<div class="center-control">
+  <div class="more-panel fr" *ngIf="controlList && controlList.length == 1" (click)="onControlClick(0)"><i
+    class="fa fa-plus" aria-hidden="true"></i></div>
+  <div class="filter-panel fr" (click)="onFilterClick()"><i class="fa fa-filter" [ngStyle]="displayFilterStatus"
+                                                            aria-hidden="true"></i></div>
+  <div class="filter-panel fr" (click)="onOptionsClick()"><i class="fa fa-gear" [ngStyle]="displayFilterStatus"
+                                                             aria-hidden="true"></i></div>
+  <div class="search-panel fr">
+    <label for="search-key">
+      <i class="fa fa-search" aria-hidden="true" (click)="onSearchClick($event)"></i>
+    </label>
+    <input id="search-key" type="text" [(ngModel)]="centerInput" placeholder="{{placeholder}}"
+           (keypress)="onSearchClick($event)"/>
+  </div>
+  <div class="more-control" *ngIf="showButtonStat === 2" [ngStyle]="moreControlDDL">
+    <div class="click-mask" *ngIf="showMoreControl" (click)="hideMoreList($event)"></div>
+    <div class="more-control-arrow"></div>
+    <div class="more-control-list">
+
+      <div *ngFor="let menuItem of plusList; let i = index" class="more-control-item"
+           (click)="onAddClick($event,i)">{{menuItem.title}}
+      </div>
+    </div>
+  </div>
+</div>
+

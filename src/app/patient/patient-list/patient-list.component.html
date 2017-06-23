@@ -1,0 +1,11 @@
+<div id="app-center-container">
+  <app-center-header></app-center-header>
+  <div id="app-center-content">
+    <button (click)="onChildRouterClick()" class="click-no-hide-detail">测试子路由</button>
+    <button (click)="onParentRouterClick()">跳转到上一级兄弟路由</button>
+  </div>
+</div>
+<div id="right-slider-container">
+  <router-outlet></router-outlet>
+</div>
+

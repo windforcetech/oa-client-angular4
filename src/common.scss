@@ -1,0 +1,356 @@
+/*****变量定义*******************/
+/*****颜色*****************/
+/*****常规文字颜色*****/
+$color1_1: #333333;
+$color1_2: #666666;
+$color1_3: #999999;
+/*****板块背景颜色/分割线颜色*****/
+$color2_1: #dbdbdb;
+$color2_2: #fbfbfe;
+$color2_3: #e6e7f3;
+$color2_4: #ffffff;
+/*****按钮背景颜色/菜单背景颜色*****/
+$color3_1: #7a80fa;
+$color3_2: #605bf5;
+$color3_3: #524ddb;
+$color3_4: transparent;
+/*****标签/提示性文字颜色*****/
+$color4_1: #fea356;
+$color4_2: #379d65;
+$color4_3: #d8385d;
+$color4_4: #fe4e74;
+/*****颜色结束*****************/
+/*****文本*****************/
+$font-family: Arial, Helvetica, "微软雅黑", sans-serif;
+$font-size-html: 20px;
+$font-size1: 0.8rem;
+$font-size2: 0.7rem;
+$font-size3: 0.6rem;
+/*****文本结束*****************/
+/*****圆角*****/
+$radius: 0.2rem 0.2rem;
+$solid1: solid 1px;
+/*****变量定义结束*******************/
+* {
+  box-sizing: border-box;
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+html {
+  height: 100%;
+  font-size: $font-size-html;
+  background-color: $color2_4;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size3;
+  overflow: auto;
+}
+
+/*****框架开始*****/
+app-root {
+  height: 100%;
+  overflow: hidden;
+  min-width: 24rem;
+  position: relative;
+}
+
+app-left-content {
+  display: block;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  background-color: #7a80fa;
+}
+
+#app-main-mask {
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0;
+  left: 0;
+}
+
+#app-main-container {
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+}
+
+app-main-root {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
+app-main-root > :nth-child(2) {
+  position: relative;
+}
+
+#app-center-container {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+}
+
+app-center-header {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 2rem;
+  transition: padding 0.2s;
+  font-size: $font-size1;
+  color: $color1_1;
+
+  .center-control{
+    display:flex;
+    justify-content: flex-end;
+  }
+}
+
+.right-slider-container {
+  border-left: $solid1 $color2_1;
+  background-color: $color2_2;
+}
+
+.right-slider-container.large {
+  width: 861px;
+  right: -861px;
+  transition: right 0.2s;
+}
+
+.right-slider-container.large[status='show'] {
+  width: 861px;
+  right: 0;
+  transition: right 0.2s;
+}
+
+.right-slider-container.large + #app-center-container {
+  width: 100% !important;
+}
+
+.right-slider-container {
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+}
+
+/***** 宽屏显示 *****/
+@media only screen and (min-width: 1601px) {
+  app-left-content {
+    width: 9rem;
+    left: 0;
+    transition: width 0.2s, left 0.2s;
+  }
+  #app-main-container {
+    width: calc(100% - 9rem);
+    left: 9rem;
+    transition: width 0.2s, left 0.2s;
+  }
+
+  .right-slider-container {
+    width: calc((100% - 960px - 481px) / 2 + 481px);
+    right: 0;
+    transition: width 0.2s, right 0.2s;
+  }
+  #app-center-container {
+    width: calc((100% - 960px - 481px) / 2 + 960px);
+    left: 0;
+    transition: width 0.2s;
+  }
+}
+
+/***** 中宽屏显示 *****/
+@media only screen and (min-width: 1120px) and (max-width: 1600px) {
+  app-left-content {
+    width: 9rem;
+    left: 0;
+    transition: width 0.2s, left 0.2s;
+  }
+  #app-main-container {
+    width: calc(100% - 9rem);
+    left: 9rem;
+    transition: width 0.2s, left 0.2s;
+  }
+
+  .right-slider-container {
+    width: 481px;
+    right: -481px;
+    transition: width 0.2s, right 0.2s;
+  }
+  .right-slider-container[status='show'] {
+    width: 481px;
+    right: 0;
+    transition: width 0.2s, right 0.2s;
+  }
+  #app-center-container {
+    width: 100%;
+    left: 0;
+    transition: width 0.2s;
+  }
+}
+
+/***** 窄屏 + iPad显示 *****/
+@media only screen and (min-width: 1000px) and (max-width: 1119px) {
+  app-left-content {
+    width: 3rem;
+    left: 0;
+    transition: width 0.2s, left 0.2s;
+  }
+  #app-main-container {
+    width: calc(100% - 3rem);
+    left: 3rem;
+    transition: width 0.2s, left 0.2s;
+  }
+  .right-slider-container {
+    width: 481px;
+    right: -481px;
+    transition: width 0.2s, right 0.2s;
+  }
+  .right-slider-container[status='show'] {
+    width: 481px;
+    right: 0;
+    transition: width 0.2s, right 0.2s;
+  }
+  #app-center-container {
+    width: 100%;
+    left: 0;
+    transition: width 0.2s;
+  }
+}
+
+/***** 大于等于480宽度的移动端显示 *****/
+@media only screen and (min-width: 480px) and (max-width: 999px) {
+  app-left-content {
+    width: 3rem;
+    left: -3rem;
+    transition: width 0.2s, left 0.2s;
+  }
+  app-left-content[status='show'] {
+    width: 9rem;
+    left: 0;
+    transition: width 0.2s, left 0.2s;
+  }
+  #app-main-container {
+    width: 100%;
+    left: 0;
+    transition: width 0.2s, left 0.2s;
+  }
+
+  #app-main-container[status='show'] {
+    left: 9rem;
+    transition: left 0.2s;
+  }
+
+  .right-slider-container {
+    border-left: none;
+    width: 100% !important;
+    right: -100% !important;
+    transition: width 0.2s, right 0.2s;
+  }
+  .right-slider-container[status='show'] {
+    width: 100% !important;
+    right: 0 !important;
+    transition: width 0.2s, right 0.2s;
+  }
+  #app-center-container {
+    width: 100%;
+    left: 0;
+    transition: width 0.2s;
+  }
+  app-center-header {
+    padding:0 1rem;
+    transition: padding 0.2s;
+  }
+  #app-main-mask[status='show'] {
+    opacity: 0.2;
+    z-index: 200;
+    left: 9rem;
+    transition: z-index 0.2s, opacity 0.2s, left 0.2s;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  app-left-content {
+    width: 9rem;
+  }
+}
+
+/*****框架结束*****/
+
+/***** 按钮开始 *****/
+button {
+  border-radius: $radius;
+  border: $solid1 $color3_1;
+  font-size: $font-size3;
+  text-align: center;
+  color: $color3_1;
+  background-color: $color3_4;
+  cursor: pointer;
+  outline: none;
+
+  button:hover {
+    background-color: $color3_2;
+    color: $color2_4;
+  }
+
+  .button:disabled {
+    color: $color1_3;
+    border: $solid1 $color2_1;
+  }
+
+  .button1 {
+    height: 1rem;
+    min-width: 2.3rem;
+    padding: 0 0.6rem;
+    background-color: $color3_1;
+    color: $color2_4;
+    border: 0;
+  }
+
+  .button2 {
+    height: 1rem;
+    min-width: 3rem;
+    padding: 0 0.9rem;
+
+  }
+
+  .button3 {
+    height: 1.6rem;
+    min-width: 3rem;
+    padding: 0 0.9rem;
+
+  }
+
+  .button4 {
+    height: 1.6rem;
+    min-width: 4rem;
+    padding: 0 1rem;
+  }
+
+  .button5 {
+    height: 1.6rem;
+    min-width: 4rem;
+    padding: 0 1rem;
+    background-color: $color3_1;
+    border: 0;
+    color: $color2_4;
+  }
+}

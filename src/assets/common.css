@@ -1,0 +1,911 @@
+@import "icon-font/iconfont.css";
+/***** 筛选开始 *****/
+
+.filter-box {
+  border: solid 1px #bcbffc;
+  padding: 1.3rem 1.5rem 0.3rem;
+  position: relative;
+  margin-top: 10px;
+}
+
+.filter-box-arrow {
+  border-top: solid 1px #bcbffc;
+  border-left: solid 1px #bcbffc;
+  transform-origin: 50% 50%;
+  transform: rotate(45deg);
+  height: .7rem;
+  width: .7rem;
+  position: absolute;
+  right: 2.1rem;
+  top: -0.4rem;
+  background-color: #fff;
+}
+
+.condition-title {
+  float: left;
+  line-height: 1.6rem;
+  height: 1.6rem;
+  width: 2.9rem;
+  color: #333333;
+  font-size: 0.6rem;
+}
+
+.condition-box {
+  padding-bottom: 1rem;
+}
+
+.condition-title-all {
+  float: left;
+  width: 2.7rem;
+}
+
+.condition-title-all span {
+  line-height: 1.6rem;
+  height: 1.6rem;
+  display: inline-block;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 0 0.5rem;
+}
+
+.condition-title-all span:hover {
+  background-color: #f7f8fe;
+}
+
+.condition-title-all span.selected {
+  color: #fff;
+  background-color: #7a80fa;
+  line-height: 1.3rem;
+  height: 1.3rem;
+  border-radius: 0.2rem 0.2rem;
+  margin-top: 0.15rem;
+}
+
+.condition-list {
+  float: left;
+  width: calc(100% - 58px - 54px);
+  height: 1.6rem !important;
+  overflow: hidden;
+  padding-right: 1.6rem;
+  position: relative;
+}
+
+.condition-list .condition-list-arrow {
+  display: block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.condition-list .condition-list-arrow i.fa {
+  line-height: 32px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.condition-list .condition-list-arrow[status="open"] i.fa-angle-down {
+  display: none;
+}
+
+.condition-list .condition-list-arrow[status="close"] i.fa-angle-up {
+  display: none;
+}
+
+.condition-text {
+  padding-right: 0;
+  float: left;
+  overflow: hidden;
+  height: 1.6rem;
+  width: calc(100% - 112px);
+}
+
+.condition-text input {
+  max-width: 10rem;
+  width: 100%;
+  margin-top: 0.15rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  outline: none;
+  padding: 0 0.5rem;
+  text-align: left;
+  overflow: hidden;
+  display: block;
+  float: left;
+}
+
+.condition-text input:focus {
+  border: solid 1px #7a80fa;
+}
+
+div.condition-time {
+  padding-right: 0;
+}
+
+div.condition-time .condition-item {
+  margin-right: 0.35rem;
+}
+
+div.condition-time div:nth-last-child(2) {
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.condition-item {
+  height: 1.6rem;
+  padding: 0.15rem 0;
+  display: block;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.condition-item span {
+  line-height: 1.3rem;
+  height: 1.3rem;
+  display: block;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 0 0.5rem;
+  overflow: hidden;
+}
+
+.condition-item span:hover {
+  background-color: #f7f8fe;
+}
+
+.condition-item span.selected {
+  color: #fff;
+  background-color: #7a80fa;
+  line-height: 1.3rem;
+  height: 1.3rem;
+  border-radius: 0.2rem 0.2rem;
+}
+
+@media only screen and (max-width: 480px) {
+  div.condition-time {
+    height: auto !important;
+  }
+
+  .condition-time-input {
+    width: 100%;
+  }
+}
+
+.condition-time-input {
+  min-width: 12.3rem;
+  height: 1.6rem;
+  float: left;
+}
+
+.condition-time-input input {
+  min-width: 4.4rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  outline: none;
+  padding: 0 0.5rem;
+  text-align: center;
+  overflow: hidden;
+  float: left;
+  display: block;
+  width: calc((100% - 90px - 20px) / 2);
+  margin-top: 0.15rem;
+  font-size: 0.6rem;
+}
+
+.condition-time-input input:focus {
+  border: solid 1px #7a80fa;
+}
+
+.condition-time-input span {
+  float: left;
+  display: block;
+  height: 1px;
+  background-color: #ccc;
+  width: 8px;
+  margin: 15px 4px;
+}
+
+.condition-time-input input:first-child {
+}
+
+.filter-box button.ok {
+  height: 1.3rem;
+  line-height: 1.3rem;
+  margin-left: 1rem;
+  width: 3rem;
+  border-radius: 0.2rem 0.2rem;
+  border: solid 1px #7a80fa;
+  background-color: #fff;
+  color: #7a80fa;
+  cursor: pointer;
+  margin-top: 0.15rem;
+  outline: none;
+}
+
+.filter-box button.ok:hover {
+  border: solid 1px #605bf5;
+  background-color: #605bf5;
+  color: #fff;
+}
+
+.filter-box button.ok:disabled, .filter-box button.ok[disabled='disabled'] {
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  color: #999;
+  cursor: default;
+}
+
+/***** 筛选结束 *****/
+
+/***** 按钮开始 *****/
+button {
+  border-radius: 0.2rem 0.2rem;
+  border: solid 1px #7a80fa;
+  font-size: 0.6rem;
+  text-align: center;
+  color: #7a80fa;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #605bf5;
+  color: #fff;
+}
+
+.button:disabled {
+  background-color: #fff;
+  color: #999;
+  border: solid 1px #dbdbdb;
+}
+
+.button1 {
+  height: 1rem;
+  min-width: 2.3rem;
+  padding: 0 0.6rem;
+  background-color: #7a80fa;
+  color: #fff;
+  border: 0;
+}
+
+.button2 {
+  height: 1rem;
+  min-width: 3rem;
+  padding: 0 0.9rem;
+
+}
+
+.button3 {
+  height: 1.6rem;
+  min-width: 3rem;
+  padding: 0 0.9rem;
+
+}
+
+.button4 {
+  height: 1.6rem;
+  min-width: 4rem;
+  padding: 0 1rem;
+}
+
+.button5 {
+  height: 1.6rem;
+  min-width: 4rem;
+  padding: 0 1rem;
+  background-color: #7a80fa;
+  border: 0;
+  color: #fff;
+}
+
+/***** 按钮结束 *****/
+
+/***** 按钮组开始 *****/
+div.button-group {
+  display: flex;
+  align-items: center;
+}
+
+div.button-group > button {
+  margin-left: 0.7rem !important;
+}
+
+div.button-group > button:first-child {
+  margin-left: 0 !important;
+}
+
+div.button-group-right {
+  justify-content: flex-end;
+  text-align: right !important;
+}
+
+div.button-group-left {
+  justify-content: flex-start;
+}
+
+/***** 按钮组结束 *****/
+
+/***** 页签开始 *****/
+
+.tab-ctrl {
+}
+
+.tab-ctrl > .tab-ctrl-head {
+  height: 2.95rem;
+  padding: 0 1.5rem;
+  border-bottom: solid 1px #DBDBDB;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tab-ctrl > .tab-ctrl-content {
+  padding: 0 1.5rem;
+}
+
+@media only screen and(max-width: 999px) {
+  .tab-ctrl > .tab-ctrl-head {
+    padding: 0 1rem;
+  }
+
+  .tab-ctrl > .tab-ctrl-content {
+    padding: 0 1rem;
+  }
+}
+
+.tab-ctrl1 > .tab-ctrl-head {
+  padding: 0 !important;
+}
+
+.tab-ctrl1 > .tab-ctrl-head > div.tab-ctrl-item {
+  font-size: .7rem !important;
+}
+
+.tab-ctrl1 > .tab-ctrl-content {
+  padding: 0;
+}
+
+.tab-ctrl2 {
+}
+
+.tab-ctrl2 > .tab-ctrl-head {
+  padding: 0;
+  height: 40px;
+  border-bottom: solid 1px #dbdbdb;
+}
+
+.tab-ctrl2 > .tab-ctrl-head > div.tab-ctrl-item {
+  border-top-left-radius: 4px 4px;
+  border-top-right-radius: 4px 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  height: 40px;
+  min-width: 116px;
+  padding: 0 30px;
+  line-height: 40px;
+}
+
+.tab-ctrl2 > .tab-ctrl-head > div.tab-ctrl-item-hover {
+  color: #524DDB;
+  border-bottom: 0;
+}
+
+.tab-ctrl2 > .tab-ctrl-head > div.tab-ctrl-item-hover:hover {
+  color: #524DDB;
+  border-bottom: 0 !important;
+}
+
+.tab-ctrl2 > .tab-ctrl-head > div.tab-ctrl-item:hover {
+  color: #524DDB;
+  border-bottom: solid 1px #dbdbdb;
+}
+
+.tab-ctrl2 > .tab-ctrl-content {
+  padding: 0 1.5rem;
+  border: solid 1px #dbdbdb;
+  border-top: 0 !important;
+}
+
+.tab-ctrl-head div.tab-ctrl-item {
+  padding: 0 1rem;
+  height: 2.9rem;
+  line-height: 2.8rem;
+  font-size: .8rem;
+  display: inline-block;
+  color: #666;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+}
+
+.tab-ctrl-head div.tab-ctrl-item-hover, .tab-ctrl-head div.tab-ctrl-item:hover {
+  border-bottom: solid #524DDB 2px;
+  color: #524DDB;
+}
+
+/***** 页签结束 *****/
+
+/***** 单选开始 *****/
+.form-radio-group {
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-radio-group .form-radio {
+  margin-left: 30px;
+}
+
+.form-radio-group .form-radio:first-child {
+  margin-left: 0;
+}
+
+.form-radio {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+}
+
+.form-radio span:nth-child(1) {
+  height: 16px;
+  width: 16px;
+  display: block;
+  padding: 3px;
+}
+
+.form-radio span:nth-child(1):before {
+  color: #aaa;
+  content: "\e6b4";
+  height: 10px;
+  width: 10px;
+  display: block;
+  line-height: 10px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.form-radio span:nth-child(1)[checked='checked']:before {
+  color: #7a80fa;
+  content: "\e6b6";
+}
+
+.form-radio span:nth-child(2) {
+  display: block;
+  line-height: 32px;
+  font-size: 12px;
+  margin-left: 8px;
+  color: #666;
+}
+
+.form-radio span:nth-child(1)[checked='checked'] + span {
+  color: #333;
+}
+
+/***** 单选结束 *****/
+
+/***** 复选组开始 *****/
+.form-checkbox-group {
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-checkbox-group .form-checkbox {
+  margin-left: 30px;
+}
+
+.form-checkbox-group .form-checkbox:first-child {
+  margin-left: 0;
+}
+
+.form-checkbox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+
+}
+
+.form-checkbox span:nth-child(1) {
+  height: 16px;
+  width: 16px;
+  display: block;
+  color: #7a80fa;
+}
+
+.form-checkbox span:nth-child(1):before {
+  content: "\e6b0";
+}
+
+.form-checkbox span:nth-child(1)[checked='checked']:before {
+  content: "\e6bf";
+}
+
+.form-checkbox span:nth-child(1)[checked='checked'] + span {
+  color: #333;
+}
+
+.form-checkbox span:last-child {
+  font-size: 12px;
+  margin-left: 8px;
+  color: #999;
+  line-height: 32px;
+}
+
+/***** 复选组结束 *****/
+/***** 选中按钮组开始 *****/
+.select-button-group {
+  display: flex !important;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.select-button-group > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  min-width: 4rem;
+  text-align: center;
+  color: #999;
+  background-color: #ECECEC;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  border-radius: 0.2rem 0.2rem;
+  padding: 0 0.8rem;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
+.select-button-group > div > .mini-icon {
+  display: none;
+}
+
+.select-button-group > div:hover {
+  background-color: #e4e6fe;
+  color: #999;
+}
+
+.select-button-group > div.selected {
+  background-color: #e4e6fe;
+  color: #524ddb;
+  padding: 0 0.5rem 0 0.4rem
+}
+
+.select-button-group > div.selected > .mini-icon {
+  width: 0.5rem;
+  height: 0.5rem;
+  font-size: 0.5rem;
+  line-height: 0.5rem;
+  padding: 0;
+  margin-right: 0.2rem;
+  display: block;
+}
+
+/***** 选中按钮组结束 *****/
+/***** 标签列表开始 *****/
+.tag-box {
+  height: 1.6rem;
+  padding-left: 0.5rem;
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  display: flex !important;
+  justify-content: left;
+  align-items: center;
+}
+
+.tag-box > div {
+  height: 1rem;
+  padding: 0 0.8rem;
+  line-height: 1rem;
+  font-size: 0.6rem;
+  cursor: default;
+  border-radius: 0.5rem 0.5rem;
+  background-color: #eee;
+  overflow: hidden;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tag-box > div > span.title {
+  height: 1rem;
+  display: block;
+  line-height: 1rem;
+  font-size: 0.6rem;
+  color: #333;
+  overflow: hidden;
+}
+
+.tag-box > div > span.delete {
+  display: none;
+}
+
+.tag-box > div:hover {
+  padding: 0 0 0 0.5rem;
+}
+
+.tag-box > div:hover > span.delete {
+  margin-left: 2px;
+  height: 1rem;
+  width: 1rem;
+  display: block;
+  cursor: pointer;
+}
+
+.tag-box > div:hover > span.delete:before {
+  content: "\e6a3";
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1rem;
+  color: #7a80fa;
+  overflow: hidden;
+  height: 1rem;
+  width: 1rem;
+}
+
+/***** 标签列表结束 *****/
+
+.icon-input {
+  height: 1.6rem;
+}
+
+.icon-input > label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.icon-input > label > input {
+
+  width: 100%;
+  height: 100%;
+
+}
+
+.icon-input > label > .icon-list {
+  z-index: 2;
+  right: 0;
+  top: 0;
+  width: auto;
+  position: absolute;
+  height: 1.6rem;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.icon-input > label > .icon-list i {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.6rem;
+  cursor: pointer;
+}
+
+/***** 表单开始 *****/
+form.validate-form > .form-section input {
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  text-indent: 0.5rem;
+  height: 1.6rem;
+}
+
+form.validate-form > .form-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.validate-form > .form-section > .form-title {
+  color: #333;
+  width: 2.9rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.6rem;
+}
+
+.validate-form > .form-section > .form-title .red-point {
+  width: 0.5rem;
+  display: block;
+  text-align: left;
+  line-height: 1.6rem;
+}
+
+.validate-form > .form-section > .form-title .red-point i {
+  display: block;
+  height: 0.2rem;
+  width: 0.2rem;
+  border-radius: 50% 50%;
+  background-color: #fe4e74;
+}
+
+.validate-form > .form-section > .form-element {
+  width: calc(100% - 3.9rem);
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+}
+
+.validate-form > .form-section > .form-element .err-message {
+  height: 1rem;
+  font-size: 0.6rem;
+  line-height: 1rem;
+  color: #fe4e74;
+  text-indent: 0.5rem;
+}
+
+.validate-form > .form-section > .form-element .err-message + input {
+  border: solid 1px rgb(254, 78, 116);
+  box-shadow: 0 0 0.15rem 0.05rem rgba(254, 78, 116, 0.35);
+  outline: none !important;
+}
+
+.validate-form > .form-section > .form-element .err-message[error=""] + input {
+  border: solid 1px #e6e7f3;
+  box-shadow: none;
+  outline: none !important;
+}
+
+.validate-form > .form-section > .form-element .input-text {
+  text-indent: 0.5rem;
+  height: 1.6rem;
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  line-height: 1.6rem;
+  outline: none;
+  color: #333;
+  width: 100%;
+}
+
+.validate-form > .form-section > .form-element .input-text:focus {
+  border: solid 1px #7a80fa !important;
+  box-shadow: none !important;
+  color: #333 !important;
+}
+
+.validate-form > .form-section > .form-element .input-text::placeholder {
+  color: #999;
+}
+
+textarea.ta-text {
+  padding: 0.3rem 0.5rem;
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  line-height: 1rem;
+  resize: none;
+  outline: none;
+  width: 100%;
+  color: #333;
+  height: auto;
+}
+
+textarea.ta-text:focus {
+  border: solid 1px #7a80fa !important;
+  box-shadow: none;
+}
+
+/***** 表单结束 *****/
+
+/********下拉框********/
+.drop-down-select {
+  height: 1.6rem;
+  position: relative;
+}
+
+.drop-down-select > div:first-child {
+  position: absolute;
+  width: 19200px;
+  left: -9600px;
+  height: 10800px;
+  top: -5400px;
+  background-color: #fff;
+  opacity: 0.0001;
+  display: none;
+}
+
+.drop-down-select > div:nth-child(2) {
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  height: 1.6rem;
+  cursor: pointer;
+  color: #999;
+  font-size: 0.6rem;
+  line-height: 1.6rem;
+  text-indent: 0.5rem;
+}
+
+.drop-down-select > div:nth-child(3) {
+  position: absolute;
+  height: 1.6rem;
+  width: 1.6rem;
+  top: 0;
+  right: 0.2rem;
+  text-align: center;
+  line-height: 1.6rem;
+  cursor: pointer;
+}
+
+.drop-down-select > div:nth-child(3) i {
+  cursor: pointer;
+  color: #666;
+}
+
+.drop-down-select > div:nth-child(3).arrow-down .fa-caret-up {
+  display: none;
+}
+
+.drop-down-select > div:nth-child(3).arrow-up .fa-caret-down {
+  display: none;
+}
+
+.drop-down-select > div:last-child {
+  position: absolute;
+  top: calc(100% - 0.15rem);
+  left: -0.15rem;
+  right: -0.15rem;
+  overflow: hidden;
+  transform-origin: 50% 0;
+  z-index: 1;
+}
+
+.drop-down-select > div:last-child > div {
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  padding: 0.5rem 0;
+  width: calc(100% - 0.3rem);
+  margin: 0.15rem;
+  box-shadow: 0 0.05rem 0.2rem 0.05rem rgba(170, 170, 170, 0.5);
+  max-height: 7.6rem;
+  background-color: #fff;
+}
+
+.drop-down-list {
+  max-height: 6.5rem;
+  overflow-y: auto;
+}
+
+.drop-down-list-item {
+  height: 1.3rem;
+  line-height: 1.3rem;
+  font-size: 0.6rem;
+  color: #666;
+  cursor: pointer;
+  text-indent: 0.5rem;
+}
+
+div.drop-down-list-item.selected {
+  background-color: #7a80fa;
+  color: #fff;
+}
+
+.drop-down-list-item:hover {
+  background-color: #f7f8fe;
+}
+
+/********下拉框结束********/

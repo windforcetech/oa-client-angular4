@@ -1,0 +1,3 @@
+<app-checkbox-group-item class="form-checkbox" [data]="item" [(ngModel)]="values[i]"
+                         *ngFor="let item of data;let i = index;"
+                         (onCheckboxClick)="onCheckboxClick(i)"></app-checkbox-group-item>

@@ -1,0 +1,12 @@
+<app-mask #fullMask></app-mask>
+<div class="popup-window" [ngStyle]="styleObject">
+  <div class="popup-title">
+    <div class="popup-back" (click)="onBackClick()"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+    <div class="popup-name">{{popupWindowName}}</div>
+    <div class="popup-close" (click)="onCloseClick()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  </div>
+  <div class="popup-content">
+    <app-loading #popupDataLoading [iconSize]="6" [fullDisplay]="false" [padding]="100"></app-loading>
+    <ng-template appPopupWindow></ng-template>
+  </div>
+</div>
