@@ -18,6 +18,7 @@ import {DemoFormComponent} from './demo-form/demo-form.component';
 import {DemoLargeComponent} from './demo-large/demo-large.component';
 import {DemoLargeDetailComponent} from './demo-large/demo-large-detail/demo-large-detail.component';
 import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-list-detail-info/demo-list-detail-info.component';
+import {DemoPopupComponent} from './demo-popup/demo-popup.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-lis
     DemoFormComponent,
     DemoLargeComponent,
     DemoLargeDetailComponent,
-    DemoListDetailInfoComponent
+    DemoListDetailInfoComponent,
+    DemoPopupComponent
   ],
   imports: [
     DemoRouterModule,
@@ -40,7 +42,8 @@ import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-lis
   ],
   providers: [],
   entryComponents: [
-    DemoNoticeComponent
+    DemoNoticeComponent,
+    DemoPopupComponent
   ]
 })
 export class DemoModule {

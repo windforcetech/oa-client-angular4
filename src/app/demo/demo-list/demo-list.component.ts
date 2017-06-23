@@ -1,17 +1,28 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+
 import {ICustomizeSlider, CustomizeSliderService} from '../../common/service/customize-slider.service';
+import {ICenterHeaderComponent} from '../../common/component/center-header/center-header.component';
+import {DemoNoticeComponent} from '../demo-notice/demo-notice.component';
+import {ApplicationService} from '../../common/service/application.service';
+
 
 @Component({
   selector: 'app-demo-list',
   templateUrl: './demo-list.component.html',
   styleUrls: ['./demo-list.component.css']
 })
-export class DemoListComponent implements OnInit, ICustomizeSlider {
+export class DemoListComponent implements OnInit, ICustomizeSlider, ICenterHeaderComponent {
+  moduleName: string;
+  controlList: string[];
   hideRightDetailHandler: EventListener;
   rightSliderShow: boolean;
   displayStatus: string;
 
-  constructor(private slider: CustomizeSliderService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private slider: CustomizeSliderService,
+              private application: ApplicationService) {
   }
 
   ngOnInit() {
@@ -21,6 +32,13 @@ export class DemoListComponent implements OnInit, ICustomizeSlider {
   }
 
   onClick(evt: Event) {
+    this.router.navigate(['detail', '9586735452373456'], {relativeTo: this.route});
     this.slider.show(this, evt);
+  }
+
+  onPopupWindow(event) {
+    this.application.frontLayer.openPopupWindow(DemoNoticeComponent, '弹窗测试', 860, 600, {}, false).subscribe(t => {
+      console.log(t);
+    })
   }
 }

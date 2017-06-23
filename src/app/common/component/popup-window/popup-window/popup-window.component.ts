@@ -5,6 +5,8 @@ import {
 import {MaskComponent} from '../../mask/mask.component';
 import {LoadingComponent} from '../../loading/loading.component';
 import {PopupWindowDirective} from '../popup-window.directive';
+import {Observable} from "rxjs/Observable";
+import {Observer} from "rxjs/Observer";
 
 @Component({
   selector: 'app-popup-window',
@@ -18,9 +20,6 @@ export class PopupWindowComponent implements OnInit, AfterViewInit {
   @Input()
   popupWindowName = '';
 
-  @ViewChild('fullMask')
-  fullMask: MaskComponent;
-
   @ViewChild('popupDataLoading')
   popupDataLoading: LoadingComponent;
 
@@ -33,8 +32,14 @@ export class PopupWindowComponent implements OnInit, AfterViewInit {
   onPopupBack = new EventEmitter<any>();
   @Output()
   onReady = new EventEmitter<any>();
+  @Output()
+  onOwnReady = new EventEmitter();
 
   constructor(private factory: ComponentFactoryResolver) {
+  }
+
+  setPopupWindowName(val) {
+    this.popupWindowName = val;
   }
 
   ngOnInit() {
@@ -53,25 +58,32 @@ export class PopupWindowComponent implements OnInit, AfterViewInit {
     this.onPopupBack.emit(null);
   }
 
-  open(componentRef: any, width: number, height: number, data?: any) {
+  open(componentRef: any, width: number, height: number | string, data?: any) {
 
     this.popupDataLoading.show();
     this.styleObject = {
-      maxHeight: height + 'px',
       maxWidth: width + 'px',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-' + (width / 2) + 'px, -' + (height / 2) + 'px)'
+      width: 'calc(100% - 160px)'
     };
-    setTimeout(() => {
-      this.popupDataLoading.hide(() => {
-        let compo: any = this.viewContainerRef.createComponent(this.factory.resolveComponentFactory(componentRef));
+    if (typeof height !== 'string') {
+      this.styleObject['maxHeight'] = height + 'px';
+      this.styleObject['height'] = 'calc(100% - 160px)';
+    }
+    console.log(this.styleObject);
+    return Observable.create((observer: Observer<any>) => {
+      const compo: any = this.viewContainerRef.createComponent(this.factory.resolveComponentFactory(componentRef));
 
-        compo.instance['data'] = data;
-        compo.instance['onParentClose'] = () => {
-          this.onPopupClose.emit(null);
-        };
+      compo.instance.onReady.subscribe(t => {
+        this.onReady.emit((t && {type: 'ready', data: t}) || null);
       });
-    }, 500);
+      compo.instance.onSend.subscribe(t => {
+        observer.next({type: 'send', data: t});
+      });
+      compo.instance.onClose.subscribe(t => {
+        // debugger
+        this.onPopupClose.emit((t && {type: 'close', data: t}) || null);
+      });
+      compo.instance.data = data;
+    });
   }
 }

@@ -11,8 +11,9 @@ import {DemoConfigComponent} from './demo-config/demo-config.component';
 import {DemoListComponent} from './demo-list/demo-list.component';
 import {DemoListDetailComponent} from './demo-list/demo-list-detail/demo-list-detail.component';
 import {MainRootComponent} from '../common/component/main-root/main-root.component';
-import {DemoLargeComponent} from "./demo-large/demo-large.component";
-import {DemoLargeDetailComponent} from "./demo-large/demo-large-detail/demo-large-detail.component";
+import {DemoLargeComponent} from './demo-large/demo-large.component';
+import {DemoLargeDetailComponent} from './demo-large/demo-large-detail/demo-large-detail.component';
+import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-list-detail-info/demo-list-detail-info.component';
 
 const demoRouter: Routes = [
   {
@@ -30,13 +31,17 @@ const demoRouter: Routes = [
       {
         path: 'list', component: DemoListComponent, children: [
         {path: '', component: RightEmptyComponent},
-        {path: 'detail', component: DemoListDetailComponent}
+        {
+          path: 'detail/:detail-id', component: DemoListDetailComponent, children: [
+          {path: 'detail-info/:info-id', component: DemoListDetailInfoComponent}
+        ]
+        }
       ]
       },
       {
         path: 'large', component: DemoLargeComponent, children: [
         {path: '', component: RightEmptyComponent},
-        {path: 'detail', component: DemoLargeDetailComponent}
+        {path: 'detail/:detail-id', component: DemoLargeDetailComponent}
       ]
       }
     ]

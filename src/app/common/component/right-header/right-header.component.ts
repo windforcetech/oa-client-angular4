@@ -13,13 +13,13 @@ export class RightHeaderComponent implements OnInit {
   controlList: string[];
 
   @Output()
-  onClose = new EventEmitter<any>();
+  onClose = new EventEmitter();
 
   @Output()
-  onBack = new EventEmitter<any>();
+  onBack = new EventEmitter();
 
   @Output()
-  onControl = new EventEmitter<any>();
+  onControl = new EventEmitter<number>();
 
   rightMoreList: any = {};
   rightCtrlShow: any = {overflow: 'hidden'};
@@ -94,4 +94,14 @@ export class RightHeaderComponent implements OnInit {
     this.onBack.emit(evt);
   }
 
+
+}
+
+export declare interface IRightHeaderComponent {
+  componentName: string;
+  controlList: string[];
+
+  onClose(): void;
+  onBack(): void;
+  onControl(val: number): void;
 }

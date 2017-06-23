@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ICustomizeSlider, CustomizeSliderService} from '../../common/service/customize-slider.service';
 import {ICenterHeaderComponent} from "../../common/component/center-header/center-header.component";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-demo-list',
@@ -16,7 +17,7 @@ export class DemoLargeComponent implements OnInit, ICustomizeSlider, ICenterHead
   rightSliderShow: boolean;
   displayStatus: string;
 
-  constructor(private slider: CustomizeSliderService) {
+  constructor(private router: Router, private route: ActivatedRoute, private slider: CustomizeSliderService) {
     this.moduleName = '演示中心';
     this.controlList = ['添加', '删除']
   }
@@ -25,6 +26,7 @@ export class DemoLargeComponent implements OnInit, ICustomizeSlider, ICenterHead
   }
 
   onClick(evt: Event) {
+    this.router.navigate(['detail', 'dejuhng'], {relativeTo: this.route});
     this.slider.show(this, evt);
   }
 }
