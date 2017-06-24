@@ -1,2 +1,6 @@
-<app-mask *ngIf="showMask"></app-mask>
-<div [ngStyle]="loadingStyle" class="loading"><img src="{{loadingImageSrc}}"/></div>
+<div class="app-loading-container">
+  <div class="loading-mask"></div>
+  <div class="loading-circle"><img class="img1" src="loading-purple.png"/><img class="img2"
+                                                                               src="loading-white.png"/>
+  </div>
+</div>

@@ -5,6 +5,6 @@
   <app-center-header [moduleName]="moduleName" [controlList]="controlList"></app-center-header>
   <button (click)="onLeftShow($event)">菜单</button>
   <button (click)="onClick($event)">侧滑1</button>
-  <button (click)="onPopupWindow($event)">弹窗</button>
+  <button [ngStyle]="{'width':currWidth}" (click)="onPopupWindow($event)">弹窗</button>
 </div>
 

@@ -1,9 +1,8 @@
 import {
-  AfterViewInit, Component, ComponentFactoryResolver, EventEmitter, Input, OnInit, Output, ViewChild,
+  AfterViewInit, Component, ComponentFactoryResolver, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output,
+  ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {MaskComponent} from '../../mask/mask.component';
-import {LoadingComponent} from '../../loading/loading.component';
 import {PopupWindowDirective} from '../popup-window.directive';
 import {Observable} from "rxjs/Observable";
 import {Observer} from "rxjs/Observer";
@@ -14,17 +13,15 @@ import {Observer} from "rxjs/Observer";
   styleUrls: ['./popup-window.component.css']
 })
 export class PopupWindowComponent implements OnInit, AfterViewInit {
-  viewContainerRef: ViewContainerRef;
-  styleObject: any = {};
-
-  @Input()
+  displayStatus;
   popupWindowName = '';
-
-  @ViewChild('popupDataLoading')
-  popupDataLoading: LoadingComponent;
+  viewContainerRef: ViewContainerRef;
 
   @ViewChild(PopupWindowDirective)
   popupWindowDirective: PopupWindowDirective;
+
+  @HostBinding('style.zIndex')
+  hostZIndex: number;
 
   @Output()
   onPopupClose = new EventEmitter<any>();
@@ -35,11 +32,15 @@ export class PopupWindowComponent implements OnInit, AfterViewInit {
   @Output()
   onOwnReady = new EventEmitter();
 
-  constructor(private factory: ComponentFactoryResolver) {
+  constructor(private factory: ComponentFactoryResolver, private el: ElementRef) {
   }
 
   setPopupWindowName(val) {
     this.popupWindowName = val;
+  }
+
+  setPopupWindowIndex(index) {
+    this.hostZIndex = index;
   }
 
   ngOnInit() {
@@ -48,6 +49,7 @@ export class PopupWindowComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.viewContainerRef = this.popupWindowDirective.viewContainerRef;
     this.onReady.emit(null);
+    this.onOwnReady.emit();
   }
 
   onCloseClick() {
@@ -59,25 +61,32 @@ export class PopupWindowComponent implements OnInit, AfterViewInit {
   }
 
   open(componentRef: any, width: number, height: number | string, data?: any) {
-
-    this.popupDataLoading.show();
-    this.styleObject = {
-      maxWidth: width + 'px',
-      width: 'calc(100% - 160px)'
-    };
+    const maxWidth = width + 'px';
+    const currWidth = 'calc(100% - 160px)';
+    let maxHeight = 'calc(100% - 160px)', currHeight = 'auto';
     if (typeof height !== 'string') {
-      this.styleObject['maxHeight'] = height + 'px';
-      this.styleObject['height'] = 'calc(100% - 160px)';
+      maxHeight = height + 'px';
+      currHeight = 'calc(100% - 160px)';
     }
-    console.log(this.styleObject);
+    const element:HTMLDivElement = <HTMLDivElement>this.el.nativeElement.querySelector('.popup-window');
+    element.style.maxWidth = maxWidth;
+    element.style.width = currWidth;
+    element.style.maxHeight = maxHeight;
+    element.style.height = currHeight;
+
     return Observable.create((observer: Observer<any>) => {
       const compo: any = this.viewContainerRef.createComponent(this.factory.resolveComponentFactory(componentRef));
-
       compo.instance.onReady.subscribe(t => {
         this.onReady.emit((t && {type: 'ready', data: t}) || null);
       });
       compo.instance.onSend.subscribe(t => {
         observer.next({type: 'send', data: t});
+      });
+      compo.instance.onOpenChild.subscribe(t => {
+        this.displayStatus = 'show';
+      });
+      compo.instance.onCloseChild.subscribe(t => {
+        this.displayStatus = 'hide';
       });
       compo.instance.onClose.subscribe(t => {
         // debugger

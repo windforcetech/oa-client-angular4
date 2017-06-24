@@ -9,7 +9,7 @@ import {CommonCoreModule} from '../common/common-core.module';
 import {CommonComponentModule} from '../common/component/common-component.module';
 
 import {DemoIndexComponent} from './demo-index/demo-index.component';
-import {DemoNoticeComponent} from './demo-notice/demo-notice.component';
+import {DemoNoticeComponent} from './popup/demo-notice/demo-notice.component';
 import {DemoRightDetailComponent} from './demo-index/demo-right-detail/demo-right-detail.component';
 import {DemoConfigComponent} from './demo-config/demo-config.component';
 import {DemoListComponent} from './demo-list/demo-list.component';
@@ -18,7 +18,9 @@ import {DemoFormComponent} from './demo-form/demo-form.component';
 import {DemoLargeComponent} from './demo-large/demo-large.component';
 import {DemoLargeDetailComponent} from './demo-large/demo-large-detail/demo-large-detail.component';
 import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-list-detail-info/demo-list-detail-info.component';
-import {DemoPopupComponent} from './demo-popup/demo-popup.component';
+import {DemoHasButtonPopupComponent} from './popup/demo-has-button-popup/demo-has-button-popup.component';
+import {DemoNoButtonPopupComponent} from './popup/demo-no-button-popup/demo-no-button-popup.component';
+import {DemoTextPopupComponent} from './popup/demo-text-popup/demo-text-popup.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {DemoPopupComponent} from './demo-popup/demo-popup.component';
     DemoLargeComponent,
     DemoLargeDetailComponent,
     DemoListDetailInfoComponent,
-    DemoPopupComponent
+    DemoHasButtonPopupComponent,
+    DemoNoButtonPopupComponent,
+    DemoTextPopupComponent
   ],
   imports: [
     DemoRouterModule,
@@ -43,7 +47,9 @@ import {DemoPopupComponent} from './demo-popup/demo-popup.component';
   providers: [],
   entryComponents: [
     DemoNoticeComponent,
-    DemoPopupComponent
+    DemoHasButtonPopupComponent,
+    DemoNoButtonPopupComponent,
+    DemoTextPopupComponent
   ]
 })
 export class DemoModule {

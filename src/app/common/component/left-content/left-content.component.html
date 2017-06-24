@@ -4,7 +4,7 @@
 <button (click)="onButtonClick('system')">系统管理</button><br>
 <button (click)="onButtonClick('outpatient-fee')">门诊收费</button><br>
 
-<app-loading #leftNavLoading [skin]="'WHITE'" [fullDisplay]="false" [iconSize]="7" [padding]="100"></app-loading>
+<app-loading [attr.status]="leftShowLoading" class="loading5 white"></app-loading>
 
 <div class="left-nav-top">
   <div class="hospital-logo" (click)="showLeft()"><img width="60px" height="60px" src="../../../../assets/images/logo.png">

@@ -10,9 +10,7 @@ import {MaskComponent} from './common/component/mask/mask.component';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   displayStatus: string;
-
-  @ViewChild('mainMask')
-  mainMask: MaskComponent;
+  mainShowLoading: string;
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
@@ -26,11 +24,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.mainMask.show();
+    this.mainShowLoading = 'show';
+
+    setTimeout(() => {
+      this.mainShowLoading = 'hide';
+    }, 1000);
   }
 
   onLeftRouterLinkClick(event) {
-    this.mainMask.show();
     // this.router.navigate([event], {relativeTo: this.route});
   }
 

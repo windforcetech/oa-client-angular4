@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {ICustomizeSlider, CustomizeSliderService} from '../../common/service/customize-slider.service';
 import {ICenterHeaderComponent} from '../../common/component/center-header/center-header.component';
-import {DemoNoticeComponent} from '../demo-notice/demo-notice.component';
+import {DemoNoticeComponent} from '../popup/demo-notice/demo-notice.component';
 import {ApplicationService} from '../../common/service/application.service';
 
 
@@ -18,6 +18,8 @@ export class DemoListComponent implements OnInit, ICustomizeSlider, ICenterHeade
   hideRightDetailHandler: EventListener;
   rightSliderShow: boolean;
   displayStatus: string;
+
+  currWidth: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -37,7 +39,7 @@ export class DemoListComponent implements OnInit, ICustomizeSlider, ICenterHeade
   }
 
   onPopupWindow(event) {
-    this.application.frontLayer.openPopupWindow(DemoNoticeComponent, '弹窗测试', 860, 600, {}, false).subscribe(t => {
+    this.application.frontLayer.openPopupWindow(DemoNoticeComponent, '弹窗测试', 860, 480, null, false).subscribe(t => {
       console.log(t);
     })
   }

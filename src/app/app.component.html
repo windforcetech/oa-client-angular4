@@ -3,6 +3,6 @@
                   (onShowLeftNav)="onShowLeftNav()"></app-left-content>
 <div id="app-main-container" [attr.status]="displayStatus">
   <router-outlet></router-outlet>
-  <app-loading #appLoading [iconSize]="3"></app-loading>
+  <app-loading [attr.status]="mainShowLoading" class="loading3 purple"></app-loading>
 </div>
 <div id="app-main-mask" [attr.status]="displayStatus" (click)="clickMask()"></div>

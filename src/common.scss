@@ -293,6 +293,31 @@ app-center-header {
 
 /*****框架结束*****/
 
+/***** 按钮组开始 *****/
+div.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.button-group > button {
+  margin-left: 0.7rem !important;
+}
+
+div.button-group > button:first-child {
+  margin-left: 0 !important;
+}
+
+div.button-group-right {
+  justify-content: flex-end;
+  text-align: right !important;
+}
+
+div.button-group-left {
+  justify-content: flex-start;
+}
+
+/***** 按钮组结束 *****/
 /***** 按钮开始 *****/
 button {
   border-radius: $radius;
@@ -303,54 +328,54 @@ button {
   background-color: $color3_4;
   cursor: pointer;
   outline: none;
+}
 
-  button:hover {
-    background-color: $color3_2;
-    color: $color2_4;
-  }
+button:hover {
+  background-color: $color3_2;
+  color: $color2_4;
+}
 
-  .button:disabled {
-    color: $color1_3;
-    border: $solid1 $color2_1;
-  }
+button:disabled {
+  color: $color1_3;
+  border: $solid1 $color2_1;
+}
 
-  .button1 {
-    height: 1rem;
-    min-width: 2.3rem;
-    padding: 0 0.6rem;
-    background-color: $color3_1;
-    color: $color2_4;
-    border: 0;
-  }
+.button1 {
+  height: 1rem;
+  min-width: 2.3rem;
+  padding: 0 0.6rem;
+  background-color: $color3_1;
+  color: $color2_4;
+  border: 0;
+}
 
-  .button2 {
-    height: 1rem;
-    min-width: 3rem;
-    padding: 0 0.9rem;
+.button2 {
+  height: 1rem;
+  min-width: 3rem;
+  padding: 0 0.9rem;
 
-  }
+}
 
-  .button3 {
-    height: 1.6rem;
-    min-width: 3rem;
-    padding: 0 0.9rem;
+.button3 {
+  height: 1.6rem;
+  min-width: 3rem;
+  padding: 0 0.9rem;
 
-  }
+}
 
-  .button4 {
-    height: 1.6rem;
-    min-width: 4rem;
-    padding: 0 1rem;
-  }
+.button4 {
+  height: 1.6rem;
+  min-width: 4rem;
+  padding: 0 1rem;
+}
 
-  .button5 {
-    height: 1.6rem;
-    min-width: 4rem;
-    padding: 0 1rem;
-    background-color: $color3_1;
-    border: 0;
-    color: $color2_4;
-  }
+.button5 {
+  height: 1.6rem;
+  min-width: 4rem;
+  padding: 0 1rem;
+  background-color: $color3_1;
+  border: 0;
+  color: $color2_4;
 }
 
 /*****弹窗系统*****/
@@ -366,7 +391,7 @@ app-front-layer {
   transition: z-index 0.2s, opacity 0.2s;
 }
 
-app-front-layer > div {
+app-front-layer > .front-container {
   width: 100%;
   height: 100%;
   position: relative;
@@ -375,19 +400,428 @@ app-front-layer > div {
 app-front-layer[status='show'] {
   opacity: 1;
   z-index: 1000;
-  transition: z-index 0.1s, opacity 0.1s;
+  transition: z-index 0.2s, opacity 0.2s;
 }
 
 app-front-layer .popup-mask {
   position: absolute;
   z-index: 0;
-  background-color: #000000;
+  background-color: #202020;
   opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+app-popup-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.popup-window {
+  position: relative;
+  box-shadow: 0 0 6px 1px #333;;
+}
+
+.popup-window .popup-title {
+  height: 3.05rem;
+  border-bottom: $solid1 $color2_1;
+  background-color: $color2_4;
+  position: relative;
+}
+
+.popup-title > .popup-back {
+  position: absolute;
+  cursor: pointer;
+  width: 0;
+  left: 0.7rem;
+  height: 1.6rem;
+  top: .7rem;
+  overflow: hidden;
+}
+
+.popup-title > .popup-back i {
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-size: 1.3rem;
+  width: 1.6rem;
+  text-align: center;
+  color: #7B81FA;
+}
+
+.popup-title > .popup-name {
+  text-align: left;
+  font-size: .8rem;
+  color: $color1_1;
+  line-height: 3rem;
+  text-indent: 1rem;
+}
+
+.popup-title > .popup-close {
+  position: absolute;
+  cursor: pointer;
+  width: 1.6rem;
+  right: 0.7rem;
+  height: 1.6rem;
+  top: .7rem;
+  overflow: hidden;
+}
+
+.popup-title > .popup-close i {
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-size: 1.3rem;
+  width: 1.6rem;
+  text-align: center;
+  color: #7B81FA;
+}
+
+.popup-window .popup-window-mask {
+  z-index: -1;
+  position: absolute;
+  background-color: #000000;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup-window .popup-window-mask[status='hide'] {
+  z-index: -1;
+  opacity: 0;
+  transition: z-index 0.2s, opacity 0.2s;
+}
+
+.popup-window .popup-window-mask[status='show'] {
+  z-index: 1000;
+  opacity: 0.6;
+  transition: z-index 0.2s, opacity 0.2s;
+}
+
+.popup-window .popup-content {
+  background-color: $color2_4;
+  height: calc(100% - 3.05rem)
+}
+
+.popup-content-box {
+  padding: 30px 30px 10px 30px
+}
+
+/***** text popup *********/
+.popup-content-box.text-message {
+  padding-bottom: 30px;
+  min-height: 120px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup-window .popup-content .button-group {
+  padding: 0 30px;
+  height: 3.05rem;
+  border-top: $solid1 $color2_1;
+}
+
+.popup-window .popup-content > * {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+.popup-content-empty {
+  height: 0;
+}
+
+.popup-window .popup-content > * > .popup-content-box {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.popup-window .popup-content .button-group + .popup-content-box {
+  max-height: calc(100% - 61px);
+}
+
+app-popup-confirm {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+}
+
+.popup-confirm {
+  max-width: 24rem;
+  width: 24rem;
+  padding: 3rem 4rem 1.5rem;
+  background-color: $color2_4;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.popup-confirm[status='show'] {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.popup-confirm[status='hide'] {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.popup-confirm .confirm-close {
+  height: 1.6rem;
+  width: 1.6rem;
+  position: absolute;
+  text-align: center;
+  line-height: 1.6rem;
+  right: 0.7rem;
+  top: 0.7rem;
+}
+
+.popup-confirm .confirm-close i {
+  font-size: 1rem;
+}
+
+.popup-confirm .button-group button {
+  margin-left: 0.5rem !important;
+}
+
+.popup-confirm .confirm-message {
+  color: $color1_1;
+  font-size: $font-size1;
+  padding: 0.5rem 0 3rem;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.confirm-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.popup-confirm .alert-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50% 50%;
+  background-color: $color4_4;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  color: $color2_4;
+}
+
+/*大于等于1000的通用样式*/
+@media screen and (min-width: 1000px) {
+  .popup-window {
+    max-height: calc(100% - 8rem);
+    max-width: calc(100% - 8rem);
+  }
+  .popup-title > .popup-name {
+    text-align: left !important;
+    text-indent: 1.5rem !important;
+    transition: text-align .2s, text-indent .2s;
+  }
+  .popup-title > .popup-back {
+    width: 0 !important;
+    transition: width .2s;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .popup-window {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    left: 0 !important;
+    top: 0 !important;
+    max-height: 100% !important;
+    max-width: 100% !important;
+    transition: width .2s, height .2s, left .2s, top .2s;
+  }
+
+  .popup-title > .popup-name {
+    text-align: center !important;
+    text-indent: 0 !important;
+    transition: text-align .2s, text-indent .2s;
+  }
+  .popup-title > .popup-back {
+    width: 1.6rem !important;
+    transition: width .2s;
+  }
+
+  .popup-title > .popup-close {
+    width: 0 !important;
+    transition: width .2s;
+  }
+  .popup-content-box {
+    padding: 30px 20px 10px 20px
+  }
+
+  .popup-window .popup-content .button-group {
+    padding: 0 20px;
+  }
+
+  .popup-confirm {
+    width: calc(100% - 3rem);
+  }
+
+}
+
+/*****loading加载中样式*****/
+app-loading {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+
+app-loading[status='show'] {
+  opacity: 1;
+  z-index: 1000;
+  transition: opacity 0.2s, z-index 0.2s;
+}
+
+app-loading[status='hide'] {
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.2s, z-index 0.2s;
+}
+
+.app-loading-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-loading-container .loading-mask {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+app-loading.loading1 .loading-circle {
+  width: 200px;
+  height: 200px;
+}
+
+app-loading.loading2 .loading-circle {
+  width: 160px;
+  height: 160px;
+}
+
+app-loading.loading3 .loading-circle {
+  width: 120px;
+  height: 120px;
+}
+
+app-loading.loading4 .loading-circle {
+  width: 100px;
+  height: 100px;
+}
+
+app-loading.loading5 .loading-circle {
+  width: 80px;
+  height: 80px;
+}
+
+app-loading.loading6 .loading-circle {
+  width: 60px;
+  height: 60px;
+}
+
+app-loading.loading7 .loading-circle {
+  width: 40px;
+  height: 40px;
+}
+
+app-loading.loading8 .loading-circle {
+  width: 20px;
+  height: 20px;
+}
+
+app-loading img {
+  display: none;
+}
+
+app-loading.purple .img2 {
+  display: none;
+}
+
+app-loading.white .img1 {
+  display: none;
+}
+
+.loading-circle img {
+  animation: loading-bg .5s linear infinite;
+  transform-origin: 50% 50%;
   width: 100%;
   height: 100%;
 }
 
-app-front-layer .popup-mask[status='show'] {
-
+@keyframes loading-bg {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(90deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  75% {
+    transform: rotateZ(270deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 
+@keyframes loading-bg {
+  0% {
+    transform: rotateZ(0deg);
+    transform-origin: 50% 50%;
+  }
+  25% {
+    transform: rotateZ(91deg);
+    transform-origin: 50% 50%;
+  }
+  50% {
+    transform: rotateZ(181deg);
+    transform-origin: 50% 50%;
+  }
+  75% {
+    transform: rotateZ(271deg);
+    transform-origin: 50% 50%;
+  }
+  100% {
+    transform: rotateZ(360deg);
+    transform-origin: 50% 50%;
+  }
+}

@@ -33,6 +33,7 @@ import {DataEmptyComponent} from './data-empty/data-empty.component';
 import {MainRootComponent} from './main-root/main-root.component';
 import {ApplicationService} from '../service/application.service';
 import {CustomizeFormComponent} from './customize-form/customize-form.component';
+import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import {CustomizeFormComponent} from './customize-form/customize-form.component'
     CheckboxGroupComponent,
     CheckboxGroupItemComponent,
     DataEmptyComponent,
-    MainRootComponent
+    MainRootComponent,
+    PopupConfirmComponent
   ],
   exports: [
     CustomizeFormComponent,
@@ -100,7 +102,8 @@ import {CustomizeFormComponent} from './customize-form/customize-form.component'
     ApplicationService
   ],
   entryComponents: [
-    PopupWindowComponent
+    PopupWindowComponent,
+    PopupConfirmComponent
   ]
 })
 export class CommonComponentModule {

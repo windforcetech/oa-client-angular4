@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {CustomizeFormComponent} from '../../common/component/customize-form/customize-form.component';
 import {AddPatientVO} from '../../common/vos/patient.vos';
-import {DemoNoticeComponent} from '../demo-notice/demo-notice.component';
+import {DemoNoticeComponent} from '../popup/demo-notice/demo-notice.component';
 import {ApplicationService} from '../../common/service/application.service';
 
 @Component({
@@ -70,7 +70,7 @@ export class DemoIndexComponent extends CustomizeFormComponent implements OnInit
   }
 
   clickOpenPopup() {
-    this.app.frontLayer.openPopupWindow(DemoNoticeComponent, '新增患者1', 500, 400, null, false).subscribe(t => {
+    this.app.frontLayer.openPopupWindow(DemoNoticeComponent, '新增患者1', 480, 300, null, false).subscribe(t => {
     });
   }
 
