@@ -1,16 +1,15 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-left-content',
-  templateUrl: './left-content.component.html',
-  styleUrls: ['./left-content.component.css']
+  selector: 'app-main-left',
+  templateUrl: './main-left.component.html',
+  styleUrls: ['./main-left.component.css']
 })
-export class LeftContentComponent implements OnInit {
+export class MainLeftComponent implements OnInit {
   leftShowLoading: string;
+
   @Output()
   onRouterLinkClick = new EventEmitter<string>();
-  @Output()
-  onShowLeftNav = new EventEmitter();
 
   constructor() {
   }
@@ -25,9 +24,5 @@ export class LeftContentComponent implements OnInit {
 
   onButtonClick(routerLink: string) {
     this.onRouterLinkClick.emit('/' + routerLink);
-  }
-
-  showLeft() {
-    this.onShowLeftNav.emit();
   }
 }

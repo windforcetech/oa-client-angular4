@@ -1,17 +1,19 @@
-<div class="right-title-box">
-  <div class="right-back" (click)="onRightContainerBack($event)"><i class="fa fa-angle-left"
-                                                                    aria-hidden="true"></i></div>
-  <div class="right-close" (click)="onRightContainerClose($event)"><i class="fa fa-close" aria-hidden="true"></i>
-  </div>
-  <div class="right-title-name">{{rightComponentName}}</div>
-  <div class="right-ctrl" [ngStyle]="rightCtrlShow" (click)="onRightMoreCtrl($event)"><i class="fa fa-ellipsis-h"
-                                                                                         aria-hidden="true"></i>
-    <div class="right-more-mask" *ngIf="showMoreList" (click)="onClickMoreMask($event)"></div>
-    <div class="right-ctrl-more" [ngStyle]="rightMoreList">
-      <div class="right-more-item" *ngFor="let ctrlItem of controlList;let i = index"
-           (click)="moreItemClick($event,i)">{{ctrlItem}}
+<div class="right-header">
+  {{componentName}}
+<div class="right-back icon" (click)="onRightContainerBack($event)"></div>
+<div class="right-control">
+  <div class="right-close icon fr" (click)="onRightContainerClose($event)"></div>
+  <div class="right-more icon fr" *ngIf="controlList && controlList.length > 0"
+       (click)="clickMoreList($event)">
+    <div class="more-ctrl-list" [attr.status]="moreListStatus" (click)="onRightMoreCtrl($event)">
+      <div class="right-more-mask" (click)="onClickMoreMask($event)"></div>
+      <div class="right-ctrl-more">
+        <div class="right-more-item" *ngFor="let ctrlItem of controlList; let i = index"
+             (click)="moreItemClick($event,i)">{{ctrlItem}}
+        </div>
       </div>
+      <div class="right-ctrl-arrow"></div>
     </div>
-    <div class="right-ctrl-arrow"></div>
   </div>
+</div>
 </div>

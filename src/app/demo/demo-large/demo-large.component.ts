@@ -9,9 +9,9 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./demo-large.component.css']
 })
 export class DemoLargeComponent implements OnInit, ICustomizeSlider, ICenterHeaderComponent {
+  placeholder: string;
   moduleName: string;
   controlList: string[];
-
 
   hideRightDetailHandler: EventListener;
   rightSliderShow: boolean;
@@ -23,6 +23,9 @@ export class DemoLargeComponent implements OnInit, ICustomizeSlider, ICenterHead
   }
 
   ngOnInit() {
+  }
+
+  onSearch(val: string): void {
   }
 
   onClick(evt: Event) {

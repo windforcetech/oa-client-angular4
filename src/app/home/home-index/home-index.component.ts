@@ -70,7 +70,7 @@ export class HomeIndexComponent extends CustomizeFormComponent implements OnInit
   }
 
   clickOpenPopup() {
-    this.app.frontLayer.openPopupWindow(HomeNoticeComponent, '新增患者1', null, false).subscribe(t => {
+    this.app.frontLayer.openPopupWindow(HomeNoticeComponent, '新增患者1', 860, 600, null, false).subscribe(t => {
     });
   }
 

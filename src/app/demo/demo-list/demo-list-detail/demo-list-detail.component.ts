@@ -30,6 +30,8 @@ export class DemoListDetailComponent implements OnInit, IRightHeaderComponent, I
   }
 
   ngOnInit() {
+    this.componentName = '侧滑演示';
+    this.controlList = ['删除', '编辑'];
     this.route.params.subscribe(t => {
       console.log(t['detail-id']);
     })

@@ -12,7 +12,7 @@ import {CenterHeaderComponent} from './center-header/center-header.component';
 import {RightEmptyComponent} from './right-empty/right-empty.component';
 import {RightHeaderComponent} from './right-header/right-header.component';
 import {ConditionFilterComponent} from './condition-filter/condition-filter.component';
-import {LeftContentComponent} from './left-content/left-content.component';
+import {MainLeftComponent} from './main-left/main-left.component';
 import {TabControlComponent} from './tab-control/tab-control.component';
 import {SelectButtonGroupComponent} from './select-button-group/select-button-group.component';
 import {TagBoxGroupComponent} from './tag-box-group/tag-box-group.component';
@@ -34,6 +34,7 @@ import {MainRootComponent} from './main-root/main-root.component';
 import {ApplicationService} from '../service/application.service';
 import {CustomizeFormComponent} from './customize-form/customize-form.component';
 import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.component';
+import {PromptMessageComponent} from './prompt-message/prompt-message.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,7 @@ import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.
     RightEmptyComponent,
     RightHeaderComponent,
     ConditionFilterComponent,
-    LeftContentComponent,
+    MainLeftComponent,
     TabControlComponent,
     SelectButtonGroupComponent,
     TagBoxGroupComponent,
@@ -68,7 +69,8 @@ import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.
     CheckboxGroupItemComponent,
     DataEmptyComponent,
     MainRootComponent,
-    PopupConfirmComponent
+    PopupConfirmComponent,
+    PromptMessageComponent
   ],
   exports: [
     CustomizeFormComponent,
@@ -78,7 +80,7 @@ import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.
     RightEmptyComponent,
     RightHeaderComponent,
     ConditionFilterComponent,
-    LeftContentComponent,
+    MainLeftComponent,
     TabControlComponent,
     SelectButtonGroupComponent,
     TagBoxGroupComponent,
@@ -96,7 +98,8 @@ import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.
     CheckboxGroupComponent,
     CheckboxGroupItemComponent,
     DataEmptyComponent,
-    MainRootComponent
+    MainRootComponent,
+    PromptMessageComponent
   ],
   providers: [
     ApplicationService

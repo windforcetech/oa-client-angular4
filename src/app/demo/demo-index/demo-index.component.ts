@@ -5,13 +5,18 @@ import {CustomizeFormComponent} from '../../common/component/customize-form/cust
 import {AddPatientVO} from '../../common/vos/patient.vos';
 import {DemoNoticeComponent} from '../popup/demo-notice/demo-notice.component';
 import {ApplicationService} from '../../common/service/application.service';
+import {ICenterHeaderComponent} from "../../common/component/center-header/center-header.component";
 
 @Component({
   selector: 'app-home-index',
   templateUrl: './demo-index.component.html',
   styleUrls: ['./demo-index.component.css']
 })
-export class DemoIndexComponent extends CustomizeFormComponent implements OnInit {
+export class DemoIndexComponent extends CustomizeFormComponent implements OnInit, ICenterHeaderComponent {
+  placeholder: string;
+  moduleName: string;
+  controlList: string[];
+
   formName = 'Patient';
   formControlList: string[] = null;
   formModel: AddPatientVO = new AddPatientVO();
@@ -57,8 +62,11 @@ export class DemoIndexComponent extends CustomizeFormComponent implements OnInit
     this.formControlList = Object.keys(this.formModel);
   }
 
+  onSearch(val: string): void {
+  }
   ngOnInit() {
     super.ngOnInit();
+    this.moduleName = '演示中心'
   }
 
   changeTab(index) {

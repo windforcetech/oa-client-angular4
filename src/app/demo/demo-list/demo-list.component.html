@@ -1,10 +1,17 @@
-<div [attr.status]="displayStatus" class="right-slider-container">
+<div [attr.status]="displayStatus" class="right-slider-container large">
   <router-outlet></router-outlet>
 </div>
 <div id="app-center-container">
-  <app-center-header [moduleName]="moduleName" [controlList]="controlList"></app-center-header>
-  <button (click)="onLeftShow($event)">菜单</button>
+  <app-center-header [moduleName]="moduleName" [controlList]="controlList"
+                     (onSearch)="onSearch($event)"></app-center-header>
+  <button (click)="onShowPrompt($event)">菜单</button>
   <button (click)="onClick($event)">侧滑1</button>
   <button [ngStyle]="{'width':currWidth}" (click)="onPopupWindow($event)">弹窗</button>
+
+  <div class="toggle-button">
+    <div [ngClass]="{'toggle-selected':toggleSelected === 0 }" (click)="toggleClick(0)">恒牙</div>
+    <div [ngClass]="{'toggle-selected':toggleSelected === 1 }" (click)="toggleClick(1)">乳牙</div>
+  </div>
+  <app-prompt-message [attr.status]="'show'" [message]="'删除成功'"></app-prompt-message>
 </div>
 
