@@ -1,11 +1,15 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-main-left',
   templateUrl: './main-left.component.html',
-  styleUrls: ['./main-left.component.css']
+  styleUrls: ['./main-left.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainLeftComponent implements OnInit {
+  @Input()
+  hospitalName: string;
+
   leftShowLoading: string;
 
   @Output()

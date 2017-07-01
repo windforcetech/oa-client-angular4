@@ -1,3 +1,16 @@
-<p>
-  demo-form works!
-</p>
+<form [formGroup]="formGroup">
+  <div [attr.error]="formErrors['CommonTime']">{{formErrors['CommonTime']}}</div>
+  <input type="text" formControlName="CommonTime" placeholder="{{formPlaceholder['CommonTime']}}">
+  <br/>
+  <div [attr.error]="formErrors['ExpressCode']">{{formErrors['ExpressCode']}}</div>
+  <input type="text" formControlName="ExpressCode" placeholder="{{formPlaceholder['ExpressCode']}}">
+  <br/>
+  <div [attr.error]="formErrors['ContactID']">{{formErrors['ContactID']}}</div>
+  <input type="text" formControlName="ContactID" placeholder="{{formPlaceholder['ContactID']}}">
+  <br/>
+  <div [attr.error]="formErrors['DayNum']">{{formErrors['DayNum']}}</div>
+  <input type="text" formControlName="DayNum" placeholder="{{formPlaceholder['DayNum']}}">
+  <br/>
+  <button type="button" [disabled]="!formGroup.valid">提交</button>
+</form>
+<button type="button" (click)="test()">测试</button>

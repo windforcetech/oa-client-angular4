@@ -15,6 +15,7 @@ import {LocalStorageService} from './service/local-storage.service';
 import {UserService} from './service/user.service';
 import {CustomizeSliderService} from './service/customize-slider.service';
 import {ApplicationService} from './service/application.service';
+import {CustomizeFormValidateService} from "./service/customize-form.service";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {ApplicationService} from './service/application.service';
     ScheduleService,
     ApplicationService,
     LocalStorageService,
-    CustomizeSliderService
+    CustomizeSliderService,
+    CustomizeFormValidateService
   ]
 })
 export class CommonCoreModule {

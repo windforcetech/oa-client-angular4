@@ -14,6 +14,7 @@ import {MainRootComponent} from '../common/component/main-root/main-root.compone
 import {DemoLargeComponent} from './demo-large/demo-large.component';
 import {DemoLargeDetailComponent} from './demo-large/demo-large-detail/demo-large-detail.component';
 import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-list-detail-info/demo-list-detail-info.component';
+import {DemoFormComponent} from "./demo-form/demo-form.component";
 
 const demoRouter: Routes = [
   {
@@ -43,7 +44,8 @@ const demoRouter: Routes = [
         {path: '', component: RightEmptyComponent},
         {path: 'detail/:detail-id', component: DemoLargeDetailComponent}
       ]
-      }
+      },
+      {path: 'form', component: DemoFormComponent},
     ]
   }
 ];

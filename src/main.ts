@@ -6,8 +6,7 @@ import {environment} from './environments/environment';
 import {ApplicationService} from './app/common/service/application.service';
 
 if (environment.production) {
-
+  enableProdMode();
 }
-enableProdMode();
 
 platformBrowserDynamic().bootstrapModule(AppModule, [ApplicationService]);
