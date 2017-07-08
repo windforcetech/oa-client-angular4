@@ -1,11 +1,11 @@
-<app-main-left [hospitalName]="'医院名'"
-  [attr.status]="displayStatus"
-               (onRouterLinkClick)="onLeftRouterLinkClick($event)"
-               (onShowLeftNav)="onShowLeftNav()"></app-main-left>
-<div id="app-main-container" [attr.status]="displayStatus">
+<app-main-left [attr.status]="displayNavStatus"
+               [hospitalName]="hospitalName"
+               [navData]="navData"
+               (onRouterLinkClick)="onLeftRouterLinkClick($event)"></app-main-left>
+<div id="app-main-container" [attr.status]="displayNavStatus">
   <div id="left-toggle-button" (click)="onShowLeftNav()"></div>
   <router-outlet></router-outlet>
   <app-loading [attr.status]="mainShowLoading" class="loading6 purple"></app-loading>
-  <div id="app-nav-mask" [attr.status]="displayStatus" (click)="clickMask()"></div>
+  <div id="app-nav-mask" [attr.status]="displayNavStatus" (click)="clickNavMask()"></div>
 </div>
-<div id="app-main-mask" [attr.status]="displayStatus" (click)="clickMask()"></div>
+<div id="app-main-mask" [attr.status]="displayMainStatus" (click)="clickMainMask()"></div>

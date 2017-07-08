@@ -1,10 +1,10 @@
 @font-face {
   font-family: "iconfont";
-  src: url('assets/icon-font/iconfont.eot?t=149578441731'); /* IE9*/
-  src: url('assets/icon-font/iconfont.eot?t=149578441731#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('assets/icon-font/iconfont.woff?t=149578441731') format('woff'), /* chrome, firefox */
-  url('assets/icon-font/iconfont.ttf?t=149578441731') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('assets/icon-font/iconfont.svg?t=149578441731#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('assets/icon-font/iconfont.eot?t=1'); /* IE9*/
+  src: url('assets/icon-font/iconfont.eot?t=1#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('assets/icon-font/iconfont.woff?t=1') format('woff'), /* chrome, firefox */
+  url('assets/icon-font/iconfont.ttf?t=1') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('assets/icon-font/iconfont.svg?t=1#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 /*****变量定义*******************/
@@ -23,6 +23,7 @@ $color3_1: #7a80fa;
 $color3_2: #605bf5;
 $color3_3: #524ddb;
 $color3_4: transparent;
+$color3_5: rgba(82, 77, 219, 0.6);
 /*****标签/提示性文字颜色*****/
 $color4_1: #fea356;
 $color4_2: #379d65;
@@ -30,7 +31,7 @@ $color4_3: #d8385d;
 $color4_4: #fe4e74;
 /*****颜色结束*****************/
 /*****文本*****************/
-$font-family: iconfont, Arial, "微软雅黑", sans-serif;
+$font-family: Arial, iconfont, "微软雅黑", sans-serif;
 $font-size-html: 20px;
 $font-size1: 0.8rem;
 $font-size2: 0.7rem;
@@ -38,7 +39,8 @@ $font-size3: 0.6rem;
 /*****文本结束*****************/
 /*****圆角*****/
 $radius: 0.2rem 0.2rem;
-$solid1: solid 1px;
+$solid1: solid 0.05rem;
+$solid2: solid 0.1rem;
 /*****变量定义结束*******************/
 * {
   box-sizing: border-box;
@@ -73,7 +75,7 @@ app-main-left {
   display: block;
   position: absolute;
   height: 100%;
-  background-color: #7a80fa;
+  background-color: $color3_2;
 }
 
 /*****左栏样式开始*****/
@@ -105,6 +107,109 @@ app-main-left {
   text-overflow: ellipsis;
 }
 
+/**** 左栏菜单 ****/
+#left-menu-container {
+  position: absolute;
+  top: 134px;
+  bottom: 84px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#left-menu div.main-menu-active:hover {
+  padding: 0 1.5rem 0 1.4rem;
+  border-left: $solid2 $color2_4;
+  background-color: $color3_3;
+}
+
+#left-menu div.main-menu-active {
+  border-left: $solid2 $color2_4;
+  background-color: $color3_3;
+  padding: 0 1.5rem 0 1.4rem;
+}
+
+#left-menu .main-menu-item {
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  background-color: transparent;
+  color: $color2_4;
+  font-size: $font-size2;
+  padding: 0 1.5rem 0 1.5rem;
+  line-height: 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#left-menu .main-menu-item:hover {
+  background-color: $color3_5;
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+#left-menu .main-menu-item span {
+  width: 100%;
+}
+
+#left-menu .left-icon {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  flex: 0 0 1rem;
+  font-size: 1rem;
+  color: $color2_4;
+  font-style: normal;
+  line-height: 1rem;
+}
+
+#left-menu .icon-patient:before {
+  content: "\e6a7";
+}
+
+#left-menu .main-menu-item .main-menu-arrow {
+  width: 0.35rem;
+  height: 0.7rem;
+  overflow: hidden;
+  text-align: right;
+  color: $color2_4;
+  flex: 0 0 0.35rem;
+  white-space: nowrap;
+  line-height: 0.8rem;
+  font-size: 0.5rem;
+}
+
+#left-menu .main-menu-item .main-menu-arrow:before {
+  content: "\e6dd";
+  margin-left: -0.3rem;
+}
+
+#left-menu .sub-menu-box {
+  overflow: hidden;
+  background-color: $color3_3;
+}
+
+
+#left-menu div.main-menu-active + .sub-menu-box .sub-menu-item {
+  margin-top: 0 !important;
+  transition: margin-top 0.3s;
+}
+
+#left-menu .sub-menu-item {
+  height: 2rem;
+  color: $color2_4;
+  line-height: 2rem;
+  padding-left: 3rem;
+  font-size: $font-size2;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+#left-menu .sub-menu-item:hover {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
 #left-nav-bottom {
   position: absolute;
   bottom: 0;
@@ -120,7 +225,11 @@ app-main-left {
   width: 1.2rem;
   margin-right: 0.5rem;
   flex: 0 0 1.2rem;
-  background-color: #d8385d;
+}
+
+#left-nav-bottom .user-head img {
+  width: 100%;
+  height: 100%;
 }
 
 #left-nav-bottom .user-name {
@@ -138,7 +247,15 @@ app-main-left {
   height: 0.8rem;
   width: 0.8rem;
   flex: 0 0 0.8rem;
-  background-color: #d8385d;
+  text-align: center;
+  line-height: 0.9rem;
+  overflow: hidden;
+  font-size: $font-size1;
+  color: $color2_4;
+}
+
+#left-nav-bottom .user-exit:before {
+  content: "\e719";
 }
 
 /*****左栏样式结束*****/
@@ -152,6 +269,7 @@ app-main-left {
   opacity: 0;
   left: 0;
   top: 0;
+  transition: z-index 0.2s, opacity 0.2s;
 }
 
 #app-main-mask[status='show'] {
@@ -164,6 +282,24 @@ app-main-left {
   height: 100%;
   overflow: hidden;
   position: absolute;
+}
+
+#app-nav-mask {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  transition: z-index 0.2s, opacity 0.2s;
+}
+
+#app-nav-mask[status='show'] {
+  opacity: 0.6;
+  z-index: 200;
+  transition: z-index 0.2s, opacity 0.2s;
 }
 
 #left-toggle-button {
@@ -745,15 +881,14 @@ app-popup-window {
   height: 1.6rem;
   top: .7rem;
   overflow: hidden;
-}
-
-.popup-title > .popup-close i {
-  height: 1.6rem;
   line-height: 1.6rem;
   font-size: 1.3rem;
-  width: 1.6rem;
   text-align: center;
   color: #7B81FA;
+}
+
+.popup-title > .popup-close :before {
+  content: "\e716";
 }
 
 .popup-window .popup-window-mask {
@@ -1388,3 +1523,130 @@ app-prompt-message span {
   height: 24px;
   line-height: 24px;
 }
+
+/*****图标文本框*****/
+app-icon-input {
+  display: block;
+  height: 1.6rem;
+  line-height: 1.6rem;
+}
+
+app-icon-input input {
+  height: 1.6rem;
+  line-height: 1.6rem;
+}
+
+/***** 选中按钮组开始 *****/
+app-select-button-group {
+  display: flex !important;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+app-select-button-group > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  min-width: 4rem;
+  text-align: center;
+  color: $color1_2;
+  background-color: #ECECEC;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  border-radius: 0.2rem 0.2rem;
+  padding: 0 0.8rem;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
+app-select-button-group > div > .mini-icon {
+  display: none;
+}
+
+app-select-button-group > div:hover {
+  background-color: #e4e6fe;
+  color: $color1_2;
+}
+
+app-select-button-group > div.selected {
+  background-color: #e4e6fe;
+  color: $color3_3;
+  padding: 0 0.5rem 0 0.4rem
+}
+
+app-select-button-group > div.selected > .mini-icon {
+  width: 0.5rem;
+  height: 0.5rem;
+  font-size: 0.5rem;
+  line-height: 0.5rem;
+  padding: 0;
+  margin-right: 0.2rem;
+  display: block;
+}
+
+/***** 选中按钮组结束 *****/
+/***** 标签列表开始 *****/
+app-tag-box-group {
+  border: solid 1px #e6e7f3;
+  border-radius: 0.2rem 0.2rem;
+  display: flex !important;
+  justify-content: left;
+  align-items: center;
+  min-height: 1.6rem;
+  flex-wrap: wrap;
+}
+
+app-tag-box-group > div {
+  height: 1rem;
+  padding: 0 0.8rem;
+  line-height: 1rem;
+  font-size: 0.6rem;
+  cursor: default;
+  border-radius: 0.5rem 0.5rem;
+  background-color: #eee;
+  overflow: hidden;
+  margin: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+app-tag-box-group > div > span.title {
+  height: 1rem;
+  display: block;
+  line-height: 1rem;
+  font-size: 0.6rem;
+  color: #333;
+  overflow: hidden;
+}
+
+app-tag-box-group > div > span.delete {
+  display: none;
+}
+
+app-tag-box-group > div:hover {
+  padding: 0 0 0 0.5rem;
+}
+
+app-tag-box-group > div:hover > span.delete {
+  margin-left: 2px;
+  height: 1rem;
+  width: 1rem;
+  display: block;
+  cursor: pointer;
+}
+
+app-tag-box-group > div:hover > span.delete:before {
+  content: "\e6a3";
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1rem;
+  color: #7a80fa;
+  overflow: hidden;
+  height: 1rem;
+  width: 1rem;
+}
+
+/***** 标签列表结束 *****/

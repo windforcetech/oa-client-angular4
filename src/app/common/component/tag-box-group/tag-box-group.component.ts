@@ -14,6 +14,7 @@ const TAG_BOX_GROUP_VALUE_ACCESSOR = {
   providers: [TAG_BOX_GROUP_VALUE_ACCESSOR]
 })
 export class TagBoxGroupComponent implements OnInit, ControlValueAccessor {
+
   tagList: TagItemClass[] = null;
 
   onChange: Function = null;
@@ -27,6 +28,7 @@ export class TagBoxGroupComponent implements OnInit, ControlValueAccessor {
 
   onDelete(index) {
     this.tagList.splice(index, 1);
+    this.tagList = Array.from(this.tagList);
     this.onChange(this.tagList);
   }
 

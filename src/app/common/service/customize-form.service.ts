@@ -341,7 +341,7 @@ function validatorMessageFn(form: any, formErrors: any, validationMessages, fiel
     formErrors[field] = '';
     const control = form.get(field);
 
-    if (control && control.dirty && !control.valid) {
+    if (control && control.dirty && control.touched && !control.valid) {
       const messages = validationMessages[field];
       for (const obj of validationOrder) {
         if (control.errors && control.errors.hasOwnProperty(obj)) {

@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "public",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -24,7 +25,8 @@
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.ts",
+        "loc": "environments/environment.ts",
+        "dev": "environments/environment.dev.ts",
         "prod": "environments/environment.prod.ts"
       }
     }

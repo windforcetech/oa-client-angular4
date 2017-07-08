@@ -5,12 +5,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 const appRouter: Routes = [
-  {path: '', redirectTo: 'demo', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'demo', loadChildren: 'app/demo/demo.module#DemoModule'},
   {path: 'home', loadChildren: 'app/home/home.module#HomeModule'},
-  {path: 'patient', loadChildren: 'app/patient/patient.module#PatientModule'},
-  {path: 'recharge', loadChildren: 'app/recharge/recharge.module#RechargeModule'},
-  {path: 'outpatient-fee', loadChildren: 'app/outpatient-fee/outpatient-fee.module#OutpatientFeeModule'}
+  {path: 'system', loadChildren: 'app/system/system.module#SystemModule'},
 ];
 
 @NgModule({

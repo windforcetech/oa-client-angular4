@@ -5,7 +5,6 @@
 import {NgModule} from '@angular/core';
 
 import {DemoRouterModule} from './demo.module.router';
-import {CommonCoreModule} from '../common/common-core.module';
 import {CommonComponentModule} from '../common/component/common-component.module';
 
 import {DemoIndexComponent} from './demo-index/demo-index.component';
@@ -41,7 +40,6 @@ import {DemoTextPopupComponent} from './popup/demo-text-popup/demo-text-popup.co
   ],
   imports: [
     DemoRouterModule,
-    CommonCoreModule,
     CommonComponentModule
   ],
   providers: [],

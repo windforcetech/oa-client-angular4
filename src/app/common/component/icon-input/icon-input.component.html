@@ -1,7 +1,10 @@
-<input type="text" placeholder=""/>
+<input type="text"
+       placeholder="{{placeholder}}"
+       (focus)="onModelTouched()"
+       [formControl]="textInput"/>
 <span class="icon-list"
       [ngStyle]="{'right':marginRight}"><i *ngFor="let item of iconList;let i = index;"
-                                           class="fa fa-{{item.iconName}}"
+                                           class="input-icon input-{{item.icon}}"
                                            [ngStyle]="{'color':item.color}"
-                                           (click)="onIconClick(i)" aria-hidden="true"></i></span>
+                                           (click)="onModelIconClick(i)" aria-hidden="true"></i></span>
 

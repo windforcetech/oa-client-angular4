@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {MenuItem} from "../../service/main.service";
 
 @Component({
   selector: 'app-main-left',
@@ -6,11 +7,22 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
   styleUrls: ['./main-left.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class MainLeftComponent implements OnInit {
+export class MainLeftComponent implements OnInit, AfterViewInit {
+  leftShowLoading: string;
+  currOpenedModule: number;
+  private _navData: MenuItem[];
+
   @Input()
   hospitalName: string;
 
-  leftShowLoading: string;
+  @Input()
+  set navData(value: MenuItem[]) {
+    this._navData = value;
+  }
+
+  get navData(): MenuItem[] {
+    return this._navData;
+  }
 
   @Output()
   onRouterLinkClick = new EventEmitter<string>();
@@ -19,12 +31,18 @@ export class MainLeftComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.leftShowLoading = 'show';
-    setTimeout(() => {
-      this.leftShowLoading = 'hide';
-    }, 2000)
   }
 
+  ngAfterViewInit(): void {
+    //this.leftShowLoading = 'show';
+  }
+
+  onMainMenuClick(event, index, name) {
+    this.currOpenedModule = index;
+  }
+
+  onSubMenuClick(event, index, name) {
+  }
 
   onButtonClick(routerLink: string) {
     this.onRouterLinkClick.emit('/' + routerLink);

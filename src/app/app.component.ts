@@ -1,5 +1,9 @@
-import {AfterViewInit, Component, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  AfterViewChecked, AfterViewInit, Component, HostListener, OnInit, ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MainService} from "./common/service/main.service";
 
 @Component({
   selector: 'app-root',
@@ -7,11 +11,18 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  displayStatus: string;
+export class AppComponent implements OnInit {
+  // 左栏滑出遮罩
+  displayNavStatus: string;
+  // 全屏遮罩
+  displayMainStatus: string;
   mainShowLoading: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  // 左栏菜单数据
+  navData: any;
+  hospitalName: string;
+
+  constructor(private router: Router, private route: ActivatedRoute, private mainService: MainService) {
   }
 
   ngOnInit(): void {
@@ -20,32 +31,39 @@ export class AppComponent implements OnInit, AfterViewInit {
      if (!loginResult || loginResult !== 'TRUE') {
      location.href = '/public/login.html';
      }*/
-  }
-
-  ngAfterViewInit(): void {
-    this.mainShowLoading = 'show';
-
     setTimeout(() => {
-      this.mainShowLoading = 'hide';
-    }, 1000);
+      this.mainShowLoading = 'show';
+      setTimeout(() => {
+        this.mainShowLoading = 'hide';
+      }, 1000);
+    }, 100);
+    this.mainService.getMainConfig().subscribe(t => {
+      this.hospitalName = t.hospitalName;
+    });
+
+    this.mainService.getLeftNav().subscribe(t => this.navData = t);
   }
 
   onLeftRouterLinkClick(event) {
-    // this.router.navigate([event], {relativeTo: this.route});
+    this.router.navigate([event], {relativeTo: this.route});
   }
 
-  clickMask() {
-    this.displayStatus = 'hide';
+  clickNavMask() {
+    this.displayNavStatus = 'hide';
+  }
+
+  clickMainMask() {
+    this.displayMainStatus = 'hide';
   }
 
   onShowLeftNav() {
-    this.displayStatus = 'show';
+    this.displayNavStatus = 'show';
   }
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    if (this.displayStatus !== 'hide') {
-      this.displayStatus = 'hide';
+    if (this.displayNavStatus !== 'hide') {
+      this.displayNavStatus = 'hide';
     }
   }
 }

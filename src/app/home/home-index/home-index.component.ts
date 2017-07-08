@@ -1,92 +1,42 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 
-import {CustomizeFormComponent} from '../../common/component/customize-form/customize-form.component';
-import {AddPatientVO} from '../../common/vos/patient.vos';
-import {HomeNoticeComponent} from '../home-notice/home-notice.component';
-import {ApplicationService} from '../../common/service/application.service';
+import {InputIcon} from '../../common/component/icon-input/icon-input.component';
+import {SelectButtonStatus} from '../../common/component/select-button-group/select-button-group.component';
 
 @Component({
   selector: 'app-home-index',
   templateUrl: './home-index.component.html',
   styleUrls: ['./home-index.component.css']
 })
-export class HomeIndexComponent extends CustomizeFormComponent implements OnInit {
-  formName = 'Patient';
-  formControlList: string[] = null;
-  formModel: AddPatientVO = new AddPatientVO();
-
-  buttonGroupData = [
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: true},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: true},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: true},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: false},
-    {title: 'gfhy', selected: true},
-    {title: 'gfhy', selected: false}
-  ];
-
-  tabData = {
-    data: ['选项', '选项卡2', '选项卡3测试', '选项卡4测试超长'],
-    defaultIndex: 1,
-    changeTab: (index) => {
-      console.log(index);
-    }
-  };
-
-  errorMessage = '用户名密码错误';
-  dropdownList = [
-    {key: '测试标题1', value: '1'},
-    {key: '测试标题2', value: '2'},
-    {key: '测试标题3', value: '3'},
-    {key: '测试标题4', value: '4'},
-    {key: '测试标题5', value: '5'},
-    {key: '测试标题6', value: '6'}];
-
-  constructor(public el: ElementRef, private router: Router, private route: ActivatedRoute, private app: ApplicationService) {
-    super(el);
-    this.formControlList = Object.keys(this.formModel);
-  }
+export class HomeIndexComponent implements OnInit {
+  iconList: InputIcon[];
+  selectButtonList: SelectButtonStatus[];
+  selectedButtonList: SelectButtonStatus[];
 
   ngOnInit() {
-    super.ngOnInit();
+    this.iconList = [{icon: 'tf', color: '#ff0000'}];
+    this.selectButtonList =
+      [
+        {title: '根管治疗', value: '1'},
+        {title: '根管治疗', value: '2'},
+        {title: '根管治疗', value: '3'},
+        {title: '根管治疗', value: '4'},
+        {title: '根管治疗', value: '5'},
+        {title: '根管治疗', value: '6'},
+        {title: '根管治疗', value: '7'},
+        {title: '根管治疗', value: '8'},
+        {title: '根管治疗', value: '9'},
+        {title: '根管治疗', value: '10'},
+        {title: '根管治疗根管', value: '11'},
+        {title: '根管疗', value: '12'},
+        {title: '根管治疗', value: '13'},
+        {title: '根管治疗', value: '14'},
+        {title: '根管治疗', value: '15'},
+        {title: '根管治疗', value: '16'}]
   }
 
-  changeTab(index) {
-    console.log(index);
+  showData(): void {
+    this.selectedButtonList = Array.from(this.selectedButtonList);
   }
 
-  changeTab1(index) {
-    console.log(index);
-  }
-
-  clickOpenPopup() {
-    this.app.frontLayer.openPopupWindow(HomeNoticeComponent, '新增患者1', 860, 600, null, false).subscribe(t => {
-    });
-  }
-
-  onIconClick(index) {
-    console.log('点击图标的索引是' + index);
-  }
-
-  changeError() {
-    this.errorMessage = '';
-  }
-
-  changeError1() {
-    this.errorMessage = '用户名密码错误';
-  }
-
-  testNamedRouter() {
-    this.router.navigate([{outlets: {'right-detail': ['detail']}}], {relativeTo: this.route.parent});
-  }
 }

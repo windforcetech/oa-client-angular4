@@ -1,9 +1,7 @@
 /**
  * Created by KingKong on 2017/6/5.
  */
-import {ModelVO} from '../component/customize-form/customize-form.component';
-
-export class RegisterVO implements ModelVO {
+export class RegisterVO {
   constructor(public UserName: string = '',
               public UserPassword: string = '',
               public UserPassword1: number = null,

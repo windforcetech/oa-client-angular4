@@ -1,9 +1,8 @@
 /**
  * Created by KingKong on 2017/5/27.
  */
-import {ModelVO} from '../component/customize-form/customize-form.component';
 
-export class AddPatientVO implements ModelVO {
+export class AddPatientVO {
   public PatientName: string = null;
   public PatientCode: string = null;
   public Sex: number = null;

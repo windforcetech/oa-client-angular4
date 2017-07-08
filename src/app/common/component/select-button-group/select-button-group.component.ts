@@ -14,26 +14,53 @@ const SELECT_BUTTON_GROUP_VALUE_ACCESSOR = {
   providers: [SELECT_BUTTON_GROUP_VALUE_ACCESSOR]
 })
 export class SelectButtonGroupComponent implements OnInit, ControlValueAccessor {
-  @Input()
-  list: SelectButtonGroupStatus[] = null;
-
-  selectedValues: string[] = null;
-
-  onChange: Function = null;
-  onTouched: Function = null;
-
-  constructor() {
-    this.selectedValues = [];
+  private _list: SelectButtonStatus[];
+  get list(): SelectButtonStatus[] {
+    return this._list;
   }
+
+  @Input()
+  set list(value: SelectButtonStatus[]) {
+    this._list = value;
+
+    this.selectedValues = [];
+    this.selectedItems = [];
+  }
+
+  selectedValues: string[];
+  selectedItems: SelectButtonStatus[];
+
+  onChange: Function;
+  onTouched: Function;
 
   ngOnInit() {
   }
 
   onItemClick(index) {
-    this.list[index].selected = !this.list[index].selected;
+    const idx = this.selectedValues.indexOf(this.list[index].value), item = this.list[index];
+
+    if (idx === -1) {
+      this.selectedValues.push(item.value);
+      this.selectedItems.push(item);
+    } else {
+      this.selectedValues.splice(idx, 1);
+      this.selectedItems.splice(idx, 1);
+    }
+    this.selectedItems = Array.from(this.selectedItems);
+    if (this.onChange) {
+      this.onChange(this.selectedItems);
+    }
   }
 
-  writeValue(obj: any): void {
+  writeValue(obj: SelectButtonStatus[]): void {
+    this.selectedValues = [];
+    this.selectedItems = [];
+    if (obj) {
+      for (const item of obj) {
+        this.selectedValues.push(item.value);
+        this.selectedItems.push(item);
+      }
+    }
   }
 
   registerOnChange(fn: any): void {
@@ -44,8 +71,7 @@ export class SelectButtonGroupComponent implements OnInit, ControlValueAccessor 
     this.onTouched = fn;
   }
 }
-export class SelectButtonGroupStatus {
+export class SelectButtonStatus {
   public title: string = null;
   public value: string = null;
-  public selected = false;
 }

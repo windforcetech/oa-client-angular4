@@ -1,0 +1,21 @@
+:host {
+  display: block
+}
+
+div.img-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 31rem;
+}
+
+div.img-list div.img-box {
+  height: 7rem;
+  width: 7rem;
+  margin-right: 1rem;
+}
+div.img-list div.img-box:nth-child(4n+0) {
+  margin-right: 0;
+}
+.img-add {
+
+}

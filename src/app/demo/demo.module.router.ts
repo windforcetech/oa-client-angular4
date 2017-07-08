@@ -4,17 +4,21 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
+import {MainRootComponent} from '../common/component/main-root/main-root.component';
+import {RightEmptyComponent} from '../common/component/right-empty/right-empty.component';
+
 import {DemoIndexComponent} from './demo-index/demo-index.component';
 import {DemoRightDetailComponent} from './demo-index/demo-right-detail/demo-right-detail.component';
-import {RightEmptyComponent} from '../common/component/right-empty/right-empty.component';
+
 import {DemoConfigComponent} from './demo-config/demo-config.component';
 import {DemoListComponent} from './demo-list/demo-list.component';
 import {DemoListDetailComponent} from './demo-list/demo-list-detail/demo-list-detail.component';
-import {MainRootComponent} from '../common/component/main-root/main-root.component';
+import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-list-detail-info/demo-list-detail-info.component';
+
 import {DemoLargeComponent} from './demo-large/demo-large.component';
 import {DemoLargeDetailComponent} from './demo-large/demo-large-detail/demo-large-detail.component';
-import {DemoListDetailInfoComponent} from './demo-list/demo-list-detail/demo-list-detail-info/demo-list-detail-info.component';
-import {DemoFormComponent} from "./demo-form/demo-form.component";
+
+import {DemoFormComponent} from './demo-form/demo-form.component';
 
 const demoRouter: Routes = [
   {

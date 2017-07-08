@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <style>
+    html {
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    alert(window.navigator.userAgent);
+    alert(window.innerWidth);
+    alert(window.innerHeight);
+
+    if (/Safari/.exec(window.navigator.userAgent))
+      alert('我是苹果');
+    if (/FxiOS/.exec(window.navigator.userAgent))//火狐
+      document.getElementsByTagName('html')[0].style.fontSize = '20px';
+    if (/CriOS/.exec(window.navigator.userAgent)) // 谷歌
+      document.getElementsByTagName('html')[0].style.fontSize = '16px';
+    if (/MicroMessenger/.exec(window.navigator.userAgent))
+      document.getElementsByTagName('html')[0].style.fontSize = '16px';
+  </script>
+</head>
+<body>
+<p>
+  我是测试文字
+</p>
+</body>
+</html>

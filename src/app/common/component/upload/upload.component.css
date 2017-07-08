@@ -1,0 +1,15 @@
+label {
+  height: 100px;
+  width: 100px;
+  background-color: #2b669a;
+  display: block;
+  cursor: pointer;
+}
+
+label:hover {
+  text-decoration: underline;
+}
+
+label input {
+  display: none
+}

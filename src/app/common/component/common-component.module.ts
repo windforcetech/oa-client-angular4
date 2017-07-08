@@ -3,8 +3,24 @@
  */
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+
+import {CookieModule} from 'ngx-cookie';
+import {InterceptorService} from 'ng2-interceptors';
+
+import {HttpInterceptor} from '../service/http.interceptor';
+import {HttpService} from '../service/http.service';
+
+import {HomeService} from '../service/home.service';
+import {UserService} from '../service/user.service';
+import {PatientService} from '../service/patient.service';
+import {MainService} from '../service/main.service';
+import {ScheduleService} from '../service/schedule.service';
+import {ApplicationService} from '../service/application.service';
+import {LocalStorageService} from '../service/local-storage.service';
+import {CustomizeSliderService} from '../service/customize-slider.service';
+import {CustomizeFormValidateService} from '../service/customize-form.service';
 
 import {LoadingComponent} from './loading/loading.component';
 import {MaskComponent} from './mask/mask.component';
@@ -22,7 +38,6 @@ import {FrontLayerDirective} from './popup-window/front-layer.directive';
 import {PopupWindowComponent} from './popup-window/popup-window/popup-window.component';
 import {FrontLayerComponent} from './popup-window/front-layer/front-layer.component';
 import {PopupWindowBaseComponent} from './popup-window/popup-window-base/popup-window-base.component';
-import {PopupValidateFormWindowBaseComponent} from './popup-window/popup-window-base/popup-form-window-base.component';
 import {DropDownListComponent} from './drop-down-list/drop-down-list.component';
 import {RelativeSelectComponent} from './relative-select/relative-select.component';
 import {RadioGroupComponent} from './radio-group/radio-group.component';
@@ -31,19 +46,24 @@ import {CheckboxGroupComponent} from './checkbox-group/checkbox-group.component'
 import {CheckboxGroupItemComponent} from './checkbox-group-item/checkbox-group-item.component';
 import {DataEmptyComponent} from './data-empty/data-empty.component';
 import {MainRootComponent} from './main-root/main-root.component';
-import {ApplicationService} from '../service/application.service';
-import {CustomizeFormComponent} from './customize-form/customize-form.component';
 import {PopupConfirmComponent} from './popup-window/popup-confirm/popup-confirm.component';
 import {PromptMessageComponent} from './prompt-message/prompt-message.component';
+import {RequestOptions, XHRBackend} from '@angular/http';
+import { UploadComponent } from './upload/upload.component';
+import { ImageCollectionComponent } from './image-collection/image-collection.component';
+import {UploadService} from "../service/upload.service";
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    ReactiveFormsModule,
+    RouterModule,
+    CookieModule.forRoot(),
   ],
   declarations: [
-    CustomizeFormComponent,
     LoadingComponent,
     MaskComponent,
     CenterHeaderComponent,
@@ -60,7 +80,6 @@ import {PromptMessageComponent} from './prompt-message/prompt-message.component'
     PopupWindowComponent,
     FrontLayerComponent,
     PopupWindowBaseComponent,
-    PopupValidateFormWindowBaseComponent,
     DropDownListComponent,
     RelativeSelectComponent,
     RadioGroupComponent,
@@ -70,10 +89,16 @@ import {PromptMessageComponent} from './prompt-message/prompt-message.component'
     DataEmptyComponent,
     MainRootComponent,
     PopupConfirmComponent,
-    PromptMessageComponent
+    PromptMessageComponent,
+    UploadComponent,
+    ImageCollectionComponent
   ],
   exports: [
-    CustomizeFormComponent,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+
     LoadingComponent,
     MaskComponent,
     CenterHeaderComponent,
@@ -90,7 +115,6 @@ import {PromptMessageComponent} from './prompt-message/prompt-message.component'
     PopupWindowComponent,
     FrontLayerComponent,
     PopupWindowBaseComponent,
-    PopupValidateFormWindowBaseComponent,
     DropDownListComponent,
     RelativeSelectComponent,
     RadioGroupComponent,
@@ -99,10 +123,31 @@ import {PromptMessageComponent} from './prompt-message/prompt-message.component'
     CheckboxGroupItemComponent,
     DataEmptyComponent,
     MainRootComponent,
-    PromptMessageComponent
+    PromptMessageComponent,
+    UploadComponent,
+    ImageCollectionComponent
   ],
   providers: [
-    ApplicationService
+    LocalStorageService,
+    ApplicationService,
+    HttpInterceptor,
+    HttpService,
+    {
+      provide: InterceptorService,
+      useFactory: interceptorFactory,
+      deps: [XHRBackend, RequestOptions, HttpInterceptor] // Add it here, in the same order as the signature of interceptorFactory
+    },
+
+    CustomizeSliderService,
+    CustomizeFormValidateService,
+
+    HomeService,
+    UserService,
+    MainService,
+    PatientService,
+    ScheduleService,
+    UploadService
+
   ],
   entryComponents: [
     PopupWindowComponent,
@@ -110,4 +155,11 @@ import {PromptMessageComponent} from './prompt-message/prompt-message.component'
   ]
 })
 export class CommonComponentModule {
+}
+
+export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, httpInterceptor: HttpInterceptor) {
+  const service = new InterceptorService(xhrBackend, requestOptions);
+  service.addInterceptor(httpInterceptor); // Add it here
+  // Add interceptors here with service.addInterceptor(interceptor)
+  return service;
 }

@@ -1,18 +1,17 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {CustomizeFormComponent} from '../../common/component/customize-form/customize-form.component';
 import {AddPatientVO} from '../../common/vos/patient.vos';
 import {DemoNoticeComponent} from '../popup/demo-notice/demo-notice.component';
 import {ApplicationService} from '../../common/service/application.service';
-import {ICenterHeaderComponent} from "../../common/component/center-header/center-header.component";
+import {ICenterHeaderComponent} from '../../common/component/center-header/center-header.component';
 
 @Component({
   selector: 'app-home-index',
   templateUrl: './demo-index.component.html',
   styleUrls: ['./demo-index.component.css']
 })
-export class DemoIndexComponent extends CustomizeFormComponent implements OnInit, ICenterHeaderComponent {
+export class DemoIndexComponent implements OnInit, ICenterHeaderComponent {
   placeholder: string;
   moduleName: string;
   controlList: string[];
@@ -58,14 +57,12 @@ export class DemoIndexComponent extends CustomizeFormComponent implements OnInit
     {key: '测试标题6', value: '6'}];
 
   constructor(public el: ElementRef, private router: Router, private route: ActivatedRoute, private app: ApplicationService) {
-    super(el);
     this.formControlList = Object.keys(this.formModel);
   }
 
   onSearch(val: string): void {
   }
   ngOnInit() {
-    super.ngOnInit();
     this.moduleName = '演示中心'
   }
 

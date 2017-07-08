@@ -14,9 +14,3 @@
   overflow: hidden;
   margin-top: 0.4rem;
 }
-
-
-:host {
-  display: block;
-  height:100%
-}
